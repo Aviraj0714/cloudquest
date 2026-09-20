@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f6cbd'/%3E%3Cpath d='M20 44h26a9 9 0 0 0 1-18 12 12 0 0 0-23-2 10 10 0 0 0-4 20z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
 --bg:#f2f6fb;--surface:#ffffff;--surface2:#e8f0f9;--ink:#0f2237;--muted:#48607a;--line:#cfdbe8;--line2:#8fa6bd;
@@ -272,6 +272,95 @@ body.present #toast{bottom:90px}
 @media (prefers-reduced-motion:reduce){
  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
+
+/* ================= 3D update: components ================= */
+kbd{font-family:ui-monospace,Consolas,monospace;font-size:.72rem;padding:.05rem .35rem;border:1px solid var(--line2);border-radius:5px;background:var(--surface2);color:var(--muted)}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-bottom:1rem}
+.tools a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:.2rem .3rem;text-align:center;font-size:.85rem;border:1.5px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none;background:var(--surface)}
+.tools a:hover{border-color:var(--primary);background:var(--primary-soft)}
+.tools a[aria-current=page]{border-color:var(--primary);background:var(--primary-soft);font-weight:700}
+.hero3d{position:relative;padding:0;overflow:hidden;height:clamp(280px,36vw,400px);margin-bottom:1rem;background:var(--surface2)}
+.hero3d canvas{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;background:transparent}
+.hero3d-txt{position:relative;z-index:2;max-width:min(430px,60%);padding:1.3rem 1.5rem;pointer-events:none}
+.hero3d-txt .vz-controls{pointer-events:auto}
+.hero3d-txt h2{font-size:1.6rem}
+.hud{position:absolute;right:1rem;bottom:1rem;z-index:2;display:flex;align-items:center;gap:.7rem;padding:.5rem .8rem;border:1.5px solid var(--line2);border-radius:14px;background:var(--surface)}
+.tool{display:block;text-decoration:none;color:var(--ink)}
+.tool h3{margin-bottom:.2rem}
+.tool p{margin:0;color:var(--muted)}
+.lv-card,.badge,.stat,.tool,.xp-item{transition:transform .15s ease,border-color .15s}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+ .lv-card,.badge,.stat,.tool,.xp-item{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+}
+.d3 canvas,.vz canvas{cursor:grab}
+.bitrow{display:flex;gap:.4rem;flex-wrap:wrap;margin:.4rem 0 .8rem}
+.bit{display:flex;flex-direction:column;align-items:center;justify-content:center;width:64px;min-height:72px;border-radius:12px;border:2px solid var(--line2);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.bit .bv{font-size:.78rem;color:var(--muted)}
+.bit .bs{font-family:ui-monospace,Consolas,monospace;font-size:1.6rem;font-weight:700}
+.bit[aria-pressed=true]{background:var(--primary);border-color:var(--primary);color:var(--primary-ink)}
+.bit[aria-pressed=true] .bv{color:var(--primary-ink)}
+.st3-scene{height:340px;perspective:1100px;display:grid;place-items:center;overflow:hidden;border:1.5px solid var(--line);border-radius:12px;background:var(--surface2)}
+.st3{position:relative;width:250px;height:150px;transform-style:preserve-3d;transform:rotateX(62deg) rotateZ(var(--rz,-35deg));transition:transform .2s}
+.st3 .sl{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:700;border:2px solid var(--line2);border-radius:8px;background:var(--surface);color:var(--ink);transform:translateZ(calc(var(--i) * 24px))}
+.st3 .sl.you{background:var(--primary-soft);border-color:var(--primary)}
+.st3 .sl.prov{background:var(--surface2)}
+.st3 .sl.shared{background:var(--warn-soft);border-color:var(--warn);border-style:dashed}
+.gl{margin:0}
+.gl-item{padding:.5rem 0;border-bottom:1px solid var(--line)}
+.gl-item dt{font-weight:700;font-family:var(--head)}
+.gl-item dd{margin:.1rem 0 0}
+.fc{perspective:1200px;max-width:520px;margin:.6rem 0}
+.fc-in{position:relative;height:250px;transform-style:preserve-3d;transition:transform .6s}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:1.2rem;text-align:center;border:2px solid var(--primary);border-radius:18px;background:var(--surface);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc-front strong{font-family:var(--head);font-size:2rem}
+.fc-back{transform:rotateY(180deg);background:var(--primary-soft)}
+.term{background:#08111f;color:#d7e6ff;border:1.5px solid var(--line2);border-radius:12px;padding:.8rem 1rem;height:340px;overflow:auto;font-family:ui-monospace,Consolas,'Courier New',monospace;font-size:.92rem;margin:.6rem 0}
+.term pre{margin:.2rem 0 .7rem;white-space:pre-wrap;color:#aecbff;font:inherit}
+.pr{color:#7fe3c1;font-weight:700}
+.term-in{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.term-in input{flex:1 1 240px;min-height:44px;padding:.3rem .7rem;border-radius:9px;border:1.5px solid var(--line2);background:#08111f;color:#d7e6ff;font:inherit;font-family:ui-monospace,Consolas,monospace}
+.term-in label .pr{color:var(--accent)}
+.pal{position:fixed;inset:0;z-index:99;background:rgba(3,8,20,.6);display:grid;place-items:start center;padding-top:12vh}
+.pal[hidden]{display:none}
+.pal-box{width:min(640px,94vw);background:var(--surface);border:2px solid var(--primary);border-radius:16px;padding:1rem;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.pal-box input{width:100%;min-height:48px;padding:.4rem .8rem;border-radius:10px;border:1.5px solid var(--line2);background:var(--surface2);color:var(--ink);font:inherit;font-size:1.05rem}
+#palList{list-style:none;margin:.6rem 0;padding:0;max-height:48vh;overflow:auto}
+#palList li{padding:.5rem .6rem;border-radius:9px;cursor:pointer;min-height:44px}
+#palList li[aria-selected=true]{background:var(--primary-soft);box-shadow:inset 4px 0 0 var(--primary)}
+@media (max-width:640px){.hero3d-txt{max-width:100%}.hud{display:none}.tools{grid-template-columns:1fr}}
+
+/* ================= Future theme ================= */
+[data-theme=future]{
+--bg:#050a17;--surface:rgba(14,24,50,.78);--surface2:rgba(28,44,86,.55);--ink:#e9f1ff;--muted:#aab9d9;--line:rgba(120,160,255,.24);--line2:rgba(140,182,255,.55);
+--primary:#5cc8ff;--primary-ink:#03121f;--primary-soft:rgba(92,200,255,.16);--accent:#9a8fff;--accent-soft:rgba(154,143,255,.16);
+--ok:#5ee6a8;--ok-soft:rgba(94,230,168,.14);--warn:#ffc46b;--warn-soft:rgba(255,196,107,.14);--bad:#ff8fa0;--bad-soft:rgba(255,143,160,.15);
+--shadow:0 0 0 1px rgba(120,160,255,.08),0 14px 40px rgba(0,0,0,.45);
+--head:'Space Grotesk','Bricolage Grotesque','Atkinson Hyperlegible',system-ui,sans-serif;
+}
+[data-theme=future] body{background:radial-gradient(1100px 560px at 85% -8%,rgba(92,200,255,.17),transparent 60%),radial-gradient(900px 520px at -8% 35%,rgba(154,143,255,.16),transparent 60%),#050a17;background-attachment:fixed}
+[data-theme=future] body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(120,160,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.07) 1px,transparent 1px);background-size:52px 52px;-webkit-mask-image:linear-gradient(to bottom,#000,transparent 75%);mask-image:linear-gradient(to bottom,#000,transparent 75%)}
+[data-theme=future] .shell,[data-theme=future] .topbar{position:relative;z-index:1}
+[data-theme=future] .topbar{position:sticky;z-index:40;border-bottom-color:var(--line2)}
+[data-theme=future] select,[data-theme=future] option,[data-theme=future] input[type=text],[data-theme=future] input[type=number],[data-theme=future] input[type=search]{background-color:#0d1730;color:var(--ink)}
+[data-theme=future] .card,[data-theme=future] .box,[data-theme=future] .q,[data-theme=future] #sidebar,[data-theme=future] .topbar,[data-theme=future] .xp-detail,[data-theme=future] .ob,[data-theme=future] .stat{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+[data-theme=future] .card{position:relative;border-color:var(--line);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.06)}
+[data-theme=future] .card::before,[data-theme=future] .card::after{content:"";position:absolute;width:20px;height:20px;pointer-events:none;border:2px solid var(--primary);opacity:.85}
+[data-theme=future] .card::before{top:-1px;left:-1px;border-right:0;border-bottom:0;border-top-left-radius:14px}
+[data-theme=future] .card::after{bottom:-1px;right:-1px;border-left:0;border-top:0;border-bottom-right-radius:14px}
+[data-theme=future] .btn.primary{box-shadow:0 0 0 1px rgba(92,200,255,.5),0 0 22px rgba(92,200,255,.35)}
+[data-theme=future] .btn:hover{box-shadow:0 0 16px rgba(92,200,255,.25)}
+[data-theme=future] .bar>i{background:linear-gradient(90deg,var(--primary),var(--accent))}
+[data-theme=future] h1{letter-spacing:-.02em}
+[data-theme=future] .hero-main{background:linear-gradient(160deg,rgba(92,200,255,.14),rgba(14,24,50,.78))}
+[data-theme=future] .node rect{fill:rgba(12,22,46,.9)}
+[data-theme=future] .vz svg,[data-theme=future] canvas{background:radial-gradient(circle at 50% 40%,rgba(92,200,255,.1),rgba(5,10,23,.55))}
+[data-theme=future] .term{background:#030812}
+[data-theme=future] .hero3d{background:radial-gradient(circle at 70% 45%,rgba(92,200,255,.16),rgba(5,10,23,.7))}
+[data-theme=future] .hero3d canvas{background:transparent}
+[data-theme=future] .toast{background:var(--surface);color:var(--ink);border:1.5px solid var(--primary)}
+[data-theme=future] .opt:hover:not(:disabled){box-shadow:0 0 14px rgba(92,200,255,.25)}
+@media (prefers-reduced-motion:reduce){.fc-in,.st3{transition:none}}
 </style>
 </head>
 <body>
@@ -287,6 +376,7 @@ body.present #toast{bottom:90px}
     <span id="topPct">0%</span>
   </div>
   <nav class="tb-nav" aria-label="Main">
+    <button type="button" class="btn small" id="searchBtn" aria-haspopup="dialog">Search <kbd>Ctrl K</kbd></button>
     <a class="btn small" href="#/home">Home</a>
     <a class="btn small" href="#/practice">Practice quiz</a>
     <a class="btn small" href="#/progress">Progress</a>
@@ -297,6 +387,7 @@ body.present #toast{bottom:90px}
 <div class="shell">
   <aside id="sidebar" aria-label="Learning roadmap sidebar">
     <div class="xp-card" id="xpCard" aria-live="polite"></div>
+    <nav id="tools" class="tools" aria-label="Learning tools"><a href="#/glossary">Glossary</a><a href="#/lab">Terminal lab</a><a href="#/cards">Flashcards</a></nav>
     <nav id="roadmap" aria-label="Learning roadmap"></nav>
   </aside>
   <main id="main" tabindex="-1"></main>
@@ -665,11 +756,13 @@ VIZ.resp = (box, cfg, ctx) => {
   const seen = new Set([0]); let cur = 0;
   box.innerHTML = instr(cfg.instr) + `<div class="tabs" role="tablist">${cfg.models.map((m, i) => `<button type="button" role="tab" class="btn" data-i="${i}" aria-selected="false">${esc(m.name)}</button>`).join('')}</div><table class="resp" aria-label="Responsibility table"><tbody></tbody></table><div class="callout"></div><div class="vz-status" role="status"></div><div class="vz-controls">${btn('reset', 'Reset')}</div>`;
   const tb = $('tbody', box), note = $('.callout', box), status = $('.vz-status', box);
+  box._redraw = () => draw();
   const lab = { you: 'You manage this', prov: 'Provider manages this', shared: 'Shared responsibility' }, cls = { you: 'you', prov: 'prov', shared: 'shared' };
   function draw() {
     const m = cfg.models[cur];
     $$('.tabs .btn', box).forEach((b, i) => { b.setAttribute('aria-selected', i === cur); b.setAttribute('aria-pressed', i === cur); });
     tb.innerHTML = cfg.layers.map((l, i) => `<tr><td>${esc(l)}</td><td class="${cls[m.who[i]]}">${lab[m.who[i]]}</td></tr>`).join('');
+    if (box._r3) box._r3(cfg.layers, m, lab);
     note.innerHTML = m.note + ' ' + (cfg.caveat || '');
     const all = seen.size === cfg.models.length; status.className = 'vz-status' + (all ? ' ok' : ''); status.textContent = `Viewed ${seen.size} of ${cfg.models.length} models.`;
     if (all) ctx.done();
@@ -804,6 +897,7 @@ VIZ.datacenter = (box, cfg, ctx) => {
   box.innerHTML = instr(cfg.instr) + `<div class="vz-controls" role="group" aria-label="Add equipment">${btn('racks', 'Add rack')}${btn('server', 'Add server')}${btn('switch', 'Add network switch')}${btn('storage', 'Add storage unit')}${btn('cooling', 'Add cooling unit')}${btn('power', 'Add power supply')}${btn('undo', 'Undo last')}${btn('reset', 'Reset')}</div>
   <svg viewBox="0 0 720 250" role="img" aria-label="Data center racks"></svg><div class="vz-status" role="status" aria-live="polite"></div><p class="muted">A rack holds up to 4 devices. Each rack needs its own power and cooling. Servers need a switch to reach the network.</p>`;
   const svg = $('svg', box), status = $('.vz-status', box);
+  box._redraw = () => draw();
   function layout() {
     const devs = [];['switch', 'server', 'storage'].forEach(t => { for (let i = 0; i < st[t]; i++) devs.push(t); });
     const racks = Array.from({ length: st.racks }, () => []);
@@ -822,6 +916,7 @@ VIZ.datacenter = (box, cfg, ctx) => {
     });
     if (!racks.length) out = '<text x="360" y="125" text-anchor="middle" fill="var(--muted)" font-size="15">Empty room. Add a rack to begin.</text>';
     svg.innerHTML = out;
+    if (box._d3) box._d3(racks, st, hasSw);
     const msg = [];
     if (!st.racks) msg.push('Start with a rack.'); else {
       if (st.server && !hasSw) msg.push('Your servers cannot talk to the network without a switch.');
@@ -2447,6 +2542,83 @@ M('12.6', 'Azure Cost Management', 'Understanding and controlling spend', {
     Q('What is a resource tag?', 'A name and value pair attached to a resource', ['A type of VM', 'A firewall rule', 'A subnet'], 'Tags organise resources.'),
     Q('What does a budget alert do?', 'Notifies you when spending nears or passes a threshold', ['Stops the internet', 'Deletes resources automatically always', 'Encrypts data'], 'It warns, it does not always stop spending.', 'i')]
 });
+/* ============ Extra modules added in the 3D and enhancement update ============ */
+M('0.3', 'Bits, Bytes and Data Units', 'How computers store everything as numbers', {
+  obj: ['Explain that computers store all data as bits, which are 0 or 1', 'Convert a small binary number to decimal', 'Compare KB, MB, GB and TB when reading storage sizes'],
+  what: 'A <b>bit</b> is the smallest unit of data. It is either 0 or 1, like a switch that is off or on. Eight bits make one <b>byte</b>, and one byte can hold a value from 0 to 255, for example one text character. Bigger sizes are built from bytes: the <b>kilobyte (KB)</b>, <b>megabyte (MB)</b>, <b>gigabyte (GB)</b> and <b>terabyte (TB)</b>. Text, photos, music and programs are all stored as long patterns of bits.',
+  ana: 'Picture a row of light switches. Each switch is one bit, and different on and off patterns stand for different numbers or letters. Real hardware stores bits as tiny electrical or magnetic states, not literal switches.',
+  why: 'Cloud providers sell storage, memory and network speed in these units. If you cannot tell MB from GB, or a bit from a byte, you cannot estimate how much storage you need or what it will cost.',
+  ex: 'A student uploads a 3 MB photo to Google Drive or OneDrive. A free plan of 15 GB can hold roughly 5,000 photos of that size. Internet speed is usually written in megabits per second, so a 100 Mbps connection moves at most about 12 megabytes each second.',
+  how: ['Each <b>bit</b> is 0 or 1.', 'Eight bits form one <b>byte</b> with 256 possible values, from 0 to 255.', 'Each bit position has a value: 128, 64, 32, 16, 8, 4, 2, 1. Add up the positions that are set to 1.', 'A text character is stored as a number. In the common ASCII table, the number 65 means the letter A.', 'Sizes grow by about a thousand at each step: 1 KB is about 1,000 bytes, 1 MB is about 1,000 KB, and so on.'],
+  tryit: 'Click the bit switches to build a number. Make the value 65 to reveal the letter A. Then use the size converter to compare units.',
+  mist: ['A bit and a byte are different. There are 8 bits in 1 byte. Network speeds use bits, while file sizes use bytes.', 'Drive makers count 1 KB as 1,000 bytes, while some operating systems count 1,024 bytes. That is why a new drive can look a little smaller than advertised.'],
+  rem: 'Everything digital is stored as bits. Eight bits make a byte, and storage is measured in KB, MB, GB and TB.',
+  quick: TF('An internet speed of 100 Mbps means 100 megabytes per second.', false, 'Mbps means megabits per second. Divide by 8 to estimate megabytes per second.'),
+  viz: { t: 'binary', instr: 'Click a bit to flip it between 0 and 1. Build the number 65 to see the letter A, then try the converter at the bottom.' },
+  chal: {
+    title: 'Bits and Bytes', intro: 'Test your feel for data sizes.', qs: [
+      MT('Match each unit to its approximate size.', [['1 byte', '8 bits'], ['1 KB', 'About 1,000 bytes'], ['1 MB', 'About 1,000 KB'], ['1 GB', 'About 1,000 MB']], 'Each step up is about a thousand times bigger.'),
+      SC('A 4 GB video is uploaded over a link that moves 8 megabits per second. About how long will it take?', 'A little over an hour', ['About 4 seconds', 'About 30 seconds', 'About 1 minute'], '8 megabits per second is about 1 megabyte per second. 4 GB is about 4,000 MB, so it takes about 4,000 seconds.', 'i')]
+  },
+  quiz: [
+    Q('How many bits are in one byte?', '8', ['4', '16', '1,024'], 'One byte is 8 bits.'),
+    Q('Which binary pattern is the largest value that fits in one byte?', '11111111', ['10000000', '01111111', '11110000'], 'All eight bits set to 1 gives 255, the largest value one byte can hold.', 'i'),
+    Q('Which unit is the largest?', 'TB', ['GB', 'MB', 'KB'], 'A terabyte is about 1,000 gigabytes.')]
+});
+
+M('4.5', 'Benefits of the Cloud and Global Reach', 'Cost model, elasticity, reliability and where regions are', {
+  obj: ['Contrast CapEx and OpEx spending', 'List the main benefits of cloud computing', 'Explain why running an app near its users reduces latency'],
+  what: 'Cloud computing brings several benefits. The <b>cost model</b> changes from <b>CapEx</b> (capital expenditure, big upfront purchases of hardware) to <b>OpEx</b> (operational expenditure, paying for what you use). <b>Scalability</b> and <b>elasticity</b> let you add or remove resources. <b>Reliability</b> comes from redundancy across zones and regions. <b>Global reach</b> lets you place applications close to users in many <b>regions</b>. <b>Agility</b> means new resources take minutes, not weeks. Security and governance tools are available, but security is still a <b>shared responsibility</b>.',
+  ana: 'Taking a taxi instead of buying a car: you pay per trip and never service the engine. For very heavy daily use, owning can still be cheaper, so the cloud is not automatically the cheapest choice.',
+  why: 'Organizations choose cloud for speed, flexibility and reach, not only for price. Knowing these benefits is also a core part of the AZ-900 exam.',
+  ex: 'A college exam portal is busy for two weeks each semester. In the cloud it can grow for exam weeks and shrink afterwards, and it can be served from a region close to the students so pages load quickly.',
+  how: ['<b>Pay as you go:</b> resources are billed by use, which turns a large upfront cost into ongoing OpEx.', '<b>Scale:</b> add capacity when demand rises and remove it when demand falls.', '<b>Stay reliable:</b> spread copies of an app across zones and regions.', '<b>Go global:</b> deploy to a region near your users to cut latency, the delay of a round trip.', '<b>Govern and secure:</b> use identity, policy and monitoring tools, while still doing your part of the security work.'],
+  tryit: 'Drag the 3D globe to rotate it. Choose where your users are, then compare the estimated latency to each region. All numbers are simplified and illustrative.',
+  mist: ['The cloud is not always cheaper. Steady, predictable workloads can be cheaper on owned hardware over many years.', 'Region locations on the globe are approximate. Real latency depends on network paths, not only distance.'],
+  rem: 'Cloud shifts spending from CapEx to OpEx, adds elasticity, reliability and global reach, and still needs you to manage your share of security.',
+  quick: TF('Moving to the cloud always lowers the total cost of running an application.', false, 'It depends on the workload. Elastic or unpredictable demand often benefits most, while steady demand can be cheaper on owned hardware.'),
+  viz: { t: 'globe', instr: 'Pick a user location, then select regions on the globe or in the list. Drag the globe to rotate it, or use the arrow keys when it is focused.' },
+  chal: {
+    title: 'Benefits Match', intro: 'Connect each idea to what it means.', qs: [
+      MT('Match each term with its meaning.', [['CapEx', 'Upfront spending on physical assets such as servers'], ['OpEx', 'Ongoing spending that follows usage'], ['Elasticity', 'Resources grow and shrink with demand'], ['Global reach', 'Running applications close to users in many regions']], 'These four ideas appear often in cloud discussions and in the AZ-900 exam.'),
+      ID('Select every statement that is a real benefit of cloud computing.', [['New resources can be created in minutes', true], ['You can pay only for what you use', true], ['Applications can run in several regions', true], ['You never need to think about security', false], ['The cloud is always cheaper than owning hardware', false]], 'Security remains shared, and cost depends on the workload.')]
+  },
+  quiz: [
+    Q('Which spending type best describes paying a monthly cloud bill based on usage?', 'OpEx', ['CapEx', 'Depreciation only', 'A one time license'], 'OpEx is ongoing spending that follows use. CapEx is a large upfront purchase.'),
+    Q('A company hosts its app in a region close to its customers mainly to reduce what?', 'Latency', ['Encryption strength', 'Storage durability', 'The number of users'], 'Shorter distance usually means a shorter round trip, which is lower latency.', 'i'),
+    SC('An online shop expects ten times normal traffic during a festival week and normal traffic afterwards. Which cloud benefit helps most?', 'Elasticity', ['Owning more servers permanently', 'A private data center only', 'Disabling monitoring'], 'Elasticity lets capacity grow for the busy week and shrink afterwards, so you do not pay for idle servers.', 'i')]
+});
+
+M('12.7', 'AZ-900 Readiness Review', 'Map what you learned to the exam skill areas', {
+  obj: ['Recognize the three broad AZ-900 skill areas', 'Connect course modules to each skill area', 'Practice exam style questions and plan your revision'],
+  what: 'The <b>AZ-900 Azure Fundamentals</b> exam checks that you understand cloud concepts and core Azure services at an introductory level. It is commonly described in three skill areas: <b>cloud concepts</b>, <b>Azure architecture and services</b>, and <b>Azure management and governance</b>. It does not ask you to configure resources step by step, but it does expect correct vocabulary and the ability to choose the right service for a situation.',
+  why: 'A review turns separate lessons into one map. Seeing which module supports which skill area shows where to revise before trying an exam.',
+  ex: 'A student who scores well on networking questions but misses governance questions can go straight to modules 12.5 and 12.6 instead of rereading everything.',
+  how: ['Open each skill area in the explorer and read which modules cover it.', 'Note the approximate weights. They help you decide where to spend revision time.', 'Do the exam style mini-game and the knowledge check.', 'Use the Practice quiz page with the Exam style difficulty to keep testing yourself.', 'Before booking, read the current official study guide from Microsoft, because the skills outline can change.'],
+  tryit: 'Select each skill area to see the topics and matching modules. Weights shown are approximate and may change, so always confirm on the official Microsoft study guide.',
+  mist: ['Memorizing service names without knowing what problem each one solves. Learn the purpose first.', 'Confusing general cloud ideas with Azure specific services, for example region as a concept versus a named Azure region.'],
+  rem: 'AZ-900 covers cloud concepts, Azure architecture and services, and management and governance. Know the purpose of each service and choose the right one for a scenario.',
+  quick: TF('AZ-900 expects you to memorize long command line scripts.', false, 'AZ-900 is a fundamentals exam. It focuses on concepts, service purposes and simple scenarios.'),
+  viz: {
+    t: 'explorer', instr: 'Select each skill area. Explore all three.', items: [
+      { id: 'c', label: 'Cloud concepts', ic: 'CC', text: 'Why organizations use cloud, shared responsibility, public, private and hybrid models, CapEx and OpEx, consumption based pricing, IaaS, PaaS and SaaS, and benefits such as scalability, elasticity, reliability and security.', props: [['Approximate weight', '25 to 30 percent'], ['Course modules', '4.1 to 4.5, 10.1, 10.2, 11.1']] },
+      { id: 'a', label: 'Azure architecture and services', ic: 'AS', text: 'Regions, availability zones, resource groups, subscriptions, compute services, networking, storage, databases and identity services such as Microsoft Entra ID.', props: [['Approximate weight', '35 to 40 percent'], ['Course modules', '4.4, 5.1 to 6.2, 8.1 to 8.3, 12.1 to 12.5']] },
+      { id: 'm', label: 'Management and governance', ic: 'MG', text: 'Cost management, tags, Azure Policy, role based access control, monitoring, and tools for managing resources such as the portal and command line.', props: [['Approximate weight', '30 to 35 percent'], ['Course modules', '9.1, 9.3, 12.5, 12.6']] },
+      { id: 't', label: 'Study tips', ic: 'TIP', text: 'Learn the purpose of every service in one sentence. Practice scenario questions. Review every explanation for questions you miss, then repeat the Practice quiz on Exam style difficulty.', props: [['Best habit', 'Short daily practice'], ['Official source', 'Microsoft AZ-900 study guide']] }]
+  },
+  chal: {
+    title: 'Exam Style Practice', intro: 'Answer in the style of a fundamentals exam.', qs: [
+      MT('Match each Azure service with its purpose.', [['Microsoft Entra ID', 'Identity and sign in'], ['Azure Policy', 'Enforce rules such as allowed regions'], ['Azure Key Vault', 'Store secrets, keys and certificates'], ['Azure Blob Storage', 'Object storage for unstructured data'], ['Azure Load Balancer', 'Distribute traffic across servers']], 'Knowing the purpose of each service is the core skill in this exam.', 'x'),
+      SC('A company wants to prevent anyone from creating resources outside approved regions. Which Azure service should it use?', 'Azure Policy', ['Azure Key Vault', 'Azure DNS', 'Azure Files'], 'Azure Policy evaluates resources against rules such as allowed locations and can deny non compliant deployments.', 'x')]
+  },
+  quiz: [
+    SC('You need a managed platform to host a web app without managing the operating system. Which service type fits best?', 'Platform as a service', ['Infrastructure as a service', 'A private data center', 'Software as a service'], 'PaaS such as Azure App Service manages the operating system and runtime for you.', 'x'),
+    Q('Which Azure feature groups related resources so they can be managed and deleted together?', 'Resource group', ['Availability zone', 'Network security group', 'Storage account key'], 'A resource group is a logical container for related Azure resources.', 'x'),
+    Q('Which idea describes paying only for the resources you consume?', 'Consumption based pricing', ['Capital expenditure', 'Fixed license pricing', 'Reserved hardware ownership'], 'Consumption based pricing is the pay as you go model that turns CapEx into OpEx.', 'x')]
+});
+
+/* keep the curriculum in numeric order after adding modules */
+MODS.sort((a, b) => { const [al, am] = a.id.split('.').map(Number), [bl, bm] = b.id.split('.').map(Number); return al - bl || am - bm; });
 /* ============ Application ============ */
 const main = $('#main');
 let vizScope = null, uidn = 0, revealN = 1, curId = null;
@@ -2629,12 +2801,14 @@ function showOnboarding() {
 }
 
 /* ---------- theme and instructor mode ---------- */
+const THEMES = ['future', 'light', 'dark'], THEME_NAMES = { future: 'Future', light: 'Light', dark: 'Dark' };
 function applyTheme(t) {
   if (t) { S.theme = t; save(); }
-  const th = S.theme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const th = THEMES.includes(S.theme) ? S.theme : 'future';
   document.documentElement.dataset.theme = th;
-  $('#themeBtn').textContent = th === 'dark' ? 'Light theme' : 'Dark theme';
+  const b = $('#themeBtn'); b.textContent = 'Theme: ' + THEME_NAMES[th]; b.setAttribute('aria-label', 'Switch color theme. Current theme: ' + THEME_NAMES[th]);
 }
+function cycleTheme() { const cur = document.documentElement.dataset.theme; applyTheme(THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length]); }
 function setInst(on) {
   S.inst = on; save(); document.body.classList.toggle('present', on); $('#instBtn').setAttribute('aria-pressed', on);
   $('#instBtn').textContent = on ? 'Exit instructor mode' : 'Instructor mode';
@@ -2650,6 +2824,9 @@ function route() {
   if (parts[0] === 'module' && MOD[parts[1]]) { renderModule(parts[1]); openLv.add(MOD[parts[1]].lv); }
   else if (parts[0] === 'practice') renderPractice();
   else if (parts[0] === 'progress') renderProgress();
+  else if (parts[0] === 'glossary') renderGlossary(decodeURIComponent(parts[1] || ''));
+  else if (parts[0] === 'lab') renderLab();
+  else if (parts[0] === 'cards') renderCards();
   else renderHome();
   renderRoadmap(); window.scrollTo(0, 0);
   const t = $('h1', main); document.title = (t ? t.textContent + ' | ' : '') + 'CloudQuest';
@@ -2660,7 +2837,7 @@ function stepModule(d) { const i = curId ? MODS.findIndex(m => m.id === curId) :
 /* ---------- init ---------- */
 function init() {
   applyTheme(); document.body.classList.toggle('present', !!S.inst); $('#instBtn').setAttribute('aria-pressed', !!S.inst); if (S.inst) $('#instBtn').textContent = 'Exit instructor mode';
-  $('#themeBtn').addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
+  $('#themeBtn').addEventListener('click', () => cycleTheme());
   $('#instBtn').addEventListener('click', () => setInst(!S.inst));
   $('#menuBtn').addEventListener('click', () => { const o = document.body.classList.toggle('nav-open'); $('#menuBtn').setAttribute('aria-expanded', o); });
   $('#roadmap').addEventListener('click', e => {
@@ -2680,6 +2857,421 @@ function init() {
   updateChrome(); route(); checkBadges();
   if (!S.onboarded) showOnboarding();
 }
+/* ============ 3D update: lightweight 3D engine (canvas, no libraries) ============ */
+/* Objects: {t:'l',a,b,c,w,al} line, {t:'d',p,r,c,al,glow,id} dot, {t:'b',p,s,c,al} translucent box, {t:'t',p,text,c} label */
+function Scene3D(canvas, o) {
+  o = o || {};
+  const g = canvas.getContext && canvas.getContext('2d');
+  const V = { yaw: o.yaw == null ? 0.6 : o.yaw, pitch: o.pitch == null ? 0.35 : o.pitch, zoom: 1, spin: o.spin !== false && !reduceMotion(), objs: [], hits: [] };
+  const api = { st: V, supported: !!g, set(objs) { V.objs = objs; }, resetView() { V.yaw = o.yaw == null ? 0.6 : o.yaw; V.pitch = o.pitch == null ? 0.35 : o.pitch; V.zoom = 1; }, rotate(dy, dp) { V.yaw += dy; V.pitch = clamp(V.pitch + dp, -1.2, 1.2); }, setSpin(on) { V.spin = on; } };
+  if (!g) return api;
+  let w = 600, h = 300, dpr = 1, last = performance.now(), drag = null;
+  const t0 = last;
+  function size() {
+    const r = (o.fill ? canvas.parentElement : canvas).getBoundingClientRect();
+    w = Math.max(240, Math.round(r.width || 600));
+    h = o.fill ? Math.max(200, Math.round(r.height || 300)) : Math.round(w * (o.ratio || 0.55));
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function draw(t) {
+    const cs = getComputedStyle(canvas);
+    const col = n => { if (!n) return '#888'; return n.charAt(0) === '-' ? (cs.getPropertyValue(n).trim() || '#888') : n; };
+    const objs = o.build ? o.build(t, V) : V.objs;
+    const cy = Math.cos(V.yaw), sy = Math.sin(V.yaw), cp = Math.cos(V.pitch), sp = Math.sin(V.pitch);
+    const D = o.dist || 5, sc = (o.scale || 0.42) * Math.min(w, h * 1.3) * V.zoom;
+    const P = p => { const x1 = p[0] * cy + p[2] * sy, z1 = -p[0] * sy + p[2] * cy, y2 = p[1] * cp - z1 * sp, z2 = p[1] * sp + z1 * cp, k = D / (D - z2); return { x: w / 2 + (o.ox || 0) + x1 * sc * k, y: h / 2 + (o.oy || 0) - y2 * sc * k, z: z2, k }; };
+    const prims = [];
+    const F = [[0, 1, 3, 2], [4, 5, 7, 6], [0, 1, 5, 4], [2, 3, 7, 6], [0, 2, 6, 4], [1, 3, 7, 5]];
+    objs.forEach(ob => {
+      if (ob.t === 'l') { const a = P(ob.a), b = P(ob.b); prims.push({ k: 'l', z: (a.z + b.z) / 2, a, b, c: ob.c, w: ob.w, al: ob.al }); }
+      else if (ob.t === 'd') { const p = P(ob.p); prims.push({ k: 'd', z: p.z, p, r: ob.r, c: ob.c, al: ob.al, glow: ob.glow, id: ob.id }); }
+      else if (ob.t === 't') { const p = P(ob.p); prims.push({ k: 't', z: p.z + 0.01, p, text: ob.text, c: ob.c }); }
+      else if (ob.t === 'b') {
+        const pts = []; for (let i = 0; i < 8; i++) pts.push(P([ob.p[0] + (i & 4 ? 1 : -1) * ob.s[0] / 2, ob.p[1] + (i & 2 ? 1 : -1) * ob.s[1] / 2, ob.p[2] + (i & 1 ? 1 : -1) * ob.s[2] / 2]));
+        F.forEach((f, fi) => prims.push({ k: 'f', z: f.reduce((s, i) => s + pts[i].z, 0) / 4, pts: f.map(i => pts[i]), c: ob.c, al: (ob.al == null ? 0.3 : ob.al) * (fi === 3 ? 1.6 : fi === 2 ? 0.5 : 1), edge: ob.edge || ob.c }));
+      }
+    });
+    prims.sort((a, b) => a.z - b.z);
+    g.clearRect(0, 0, w, h); V.hits = [];
+    g.textAlign = 'center'; g.font = '600 12px ' + (cs.fontFamily || 'sans-serif');
+    prims.forEach(q => {
+      if (q.k === 'l') { g.globalAlpha = q.al == null ? 0.7 : q.al; g.strokeStyle = col(q.c); g.lineWidth = q.w || 1.2; g.beginPath(); g.moveTo(q.a.x, q.a.y); g.lineTo(q.b.x, q.b.y); g.stroke(); }
+      else if (q.k === 'd') {
+        const r = Math.max(1.2, q.r * q.p.k);
+        if (q.glow) { g.globalAlpha = 0.18; g.fillStyle = col(q.c); g.beginPath(); g.arc(q.p.x, q.p.y, r * 2.6, 0, 6.2832); g.fill(); }
+        g.globalAlpha = q.al == null ? 0.95 : q.al; g.fillStyle = col(q.c); g.beginPath(); g.arc(q.p.x, q.p.y, r, 0, 6.2832); g.fill();
+        if (q.id) V.hits.push({ id: q.id, x: q.p.x, y: q.p.y, r: Math.max(14, r * 2) });
+      } else if (q.k === 't') { g.globalAlpha = 0.95; g.fillStyle = col(q.c || '--ink'); g.fillText(q.text, q.p.x, q.p.y); }
+      else if (q.k === 'f') {
+        g.beginPath(); q.pts.forEach((p, i) => i ? g.lineTo(p.x, p.y) : g.moveTo(p.x, p.y)); g.closePath();
+        g.globalAlpha = q.al; g.fillStyle = col(q.c); g.fill(); g.globalAlpha = 0.85; g.strokeStyle = col(q.edge); g.lineWidth = 1.3; g.stroke();
+      }
+    });
+    g.globalAlpha = 1;
+  }
+  function frame(now) {
+    if (!canvas.isConnected) return;
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (V.spin && !drag) V.yaw += dt * (o.spinSpeed || 0.3);
+    try { draw((now - t0) / 1000); } catch (e) { console.error(e); return; }
+    requestAnimationFrame(frame);
+  }
+  const rel = e => { const r = canvas.getBoundingClientRect(); return { x: (e.clientX - r.left) * w / (r.width || w), y: (e.clientY - r.top) * h / (r.height || h) }; };
+  canvas.style.touchAction = 'pan-y'; canvas.style.cursor = 'grab';
+  canvas.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, yaw: V.yaw, pitch: V.pitch, moved: false }; try { canvas.setPointerCapture(e.pointerId); } catch (x) { } canvas.style.cursor = 'grabbing'; });
+  canvas.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.x, dy = e.clientY - drag.y; if (Math.abs(dx) + Math.abs(dy) > 4) drag.moved = true; V.yaw = drag.yaw + dx * 0.008; V.pitch = clamp(drag.pitch + dy * 0.008, -1.2, 1.2); });
+  const end = e => { if (drag && !drag.moved && o.onPick) { const p = rel(e); let best = null, bd = 1e9; V.hits.forEach(hh => { const d = Math.hypot(hh.x - p.x, hh.y - p.y); if (d < hh.r && d < bd) { bd = d; best = hh; } }); if (best) o.onPick(best.id); } drag = null; canvas.style.cursor = 'grab'; };
+  canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', () => { drag = null; canvas.style.cursor = 'grab'; });
+  canvas.addEventListener('keydown', e => {
+    const k = e.key; let used = true;
+    if (k === 'ArrowLeft') api.rotate(-0.15, 0); else if (k === 'ArrowRight') api.rotate(0.15, 0); else if (k === 'ArrowUp') api.rotate(0, -0.12); else if (k === 'ArrowDown') api.rotate(0, 0.12);
+    else if (k === '+' || k === '=') V.zoom = clamp(V.zoom + 0.1, 0.6, 1.8); else if (k === '-') V.zoom = clamp(V.zoom - 0.1, 0.6, 1.8); else used = false;
+    if (used) e.preventDefault();
+  });
+  const onResize = () => { if (!canvas.isConnected) { window.removeEventListener('resize', onResize); return; } size(); };
+  window.addEventListener('resize', onResize);
+  size(); requestAnimationFrame(frame);
+  return api;
+}
+
+/* ---- geography helpers for the globe ---- */
+const llx = (lat, lon, r = 1) => { const a = lat * Math.PI / 180, b = lon * Math.PI / 180; return [r * Math.cos(a) * Math.sin(b), r * Math.sin(a), r * Math.cos(a) * Math.cos(b)]; };
+const kmBetween = (a, b) => { const R = 6371, r = x => x * Math.PI / 180, dLat = r(b[0] - a[0]), dLon = r(b[1] - a[1]); const h = Math.sin(dLat / 2) ** 2 + Math.cos(r(a[0])) * Math.cos(r(b[0])) * Math.sin(dLon / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
+function arcPoint(a, b, t, lift) { /* a, b are unit vectors; spherical style interpolation lifted above the surface */
+  const p = [0, 1, 2].map(i => a[i] + (b[i] - a[i]) * t), l = Math.hypot(p[0], p[1], p[2]) || 1, r = 1 + lift * Math.sin(Math.PI * t);
+  return p.map(v => v / l * r);
+}
+const REGIONS = [['Central India', 'Pune', 18.5, 73.8], ['South India', 'Chennai', 13.1, 80.3], ['West India', 'Mumbai', 19.1, 72.9], ['UAE North', 'Dubai', 25.2, 55.3], ['Southeast Asia', 'Singapore', 1.35, 103.8], ['Japan East', 'Tokyo', 35.7, 139.7], ['Australia East', 'Sydney', -33.9, 151.2], ['UK South', 'London', 51.5, -0.1], ['West Europe', 'Netherlands', 52.4, 4.9], ['South Africa North', 'Johannesburg', -26.2, 28.0], ['Brazil South', 'Sao Paulo', -23.5, -46.6], ['East US', 'Virginia', 37.4, -79.0], ['West US 2', 'Washington state', 47.2, -119.9]];
+const USER_SPOTS = [['Delhi, India', 28.6, 77.2], ['London, United Kingdom', 51.5, -0.1], ['New York, United States', 40.7, -74.0], ['Nairobi, Kenya', -1.3, 36.8], ['Sydney, Australia', -33.9, 151.2], ['Sao Paulo, Brazil', -23.5, -46.6]];
+const GLOBE_BASE = (() => {
+  const out = [], seg = (a, b, al) => out.push({ t: 'l', a, b, c: '--line2', al, w: 1 });
+  for (let lat = -60; lat <= 60; lat += 30) for (let i = 0; i < 48; i++) seg(llx(lat, i * 7.5), llx(lat, (i + 1) * 7.5), 0.28);
+  for (let lon = 0; lon < 180; lon += 30) for (let i = 0; i < 48; i++) { const a = i * 7.5 - 90, b = a + 7.5; seg(llx(a, lon), llx(b, lon), 0.28); seg(llx(a, lon + 180), llx(b, lon + 180), 0.28); }
+  for (let i = 0; i < 200; i++) { const y = 1 - 2 * (i + 0.5) / 200, r = Math.sqrt(1 - y * y), th = i * 2.399963; out.push({ t: 'd', p: [Math.cos(th) * r, y, Math.sin(th) * r], r: 1.3, c: '--primary', al: 0.35 }); }
+  return out;
+})();
+const REG_XYZ = REGIONS.map(r => llx(r[2], r[3])), USER_XYZ = USER_SPOTS.map(u => llx(u[1], u[2]));
+
+VIZ.globe = (box, cfg, ctx) => {
+  let user = 0, sel = -1; const users = new Set([0]), seen = new Set();
+  const rtt = (u, r) => Math.round(8 + kmBetween([USER_SPOTS[u][1], USER_SPOTS[u][2]], [REGIONS[r][2], REGIONS[r][3]]) / 100);
+  box.innerHTML = instr(cfg.instr) + `<div class="vz-row"><label for="${ctx.uid}u">Where are your users?</label><select id="${ctx.uid}u">${USER_SPOTS.map((u, i) => `<option value="${i}">${esc(u[0])}</option>`).join('')}</select>${btn('spin', 'Pause spin')}${btn('view', 'Reset view')}${btn('reset', 'Reset')}</div>
+   <canvas tabindex="0" role="img" aria-label="3D globe showing cloud regions and the user location. Use arrow keys to rotate. The region list below gives the same information as text."></canvas>
+   <div class="vz-status" role="status" aria-live="polite"></div><h3>Regions sorted by estimated latency</h3><div class="tabs reg" role="group" aria-label="Cloud regions"></div>`;
+  const cv = $('canvas', box), status = $('.vz-status', box), list = $('.reg', box);
+  const order = () => REGIONS.map((_, i) => i).sort((a, b) => rtt(user, a) - rtt(user, b));
+  const scene = Scene3D(cv, {
+    ratio: 0.62, yaw: -1.2, pitch: 0.3, scale: 0.4, label: 'globe',
+    onPick: id => { if (id[0] === 'r') pick(+id.slice(1)); },
+    build: (t) => {
+      const objs = GLOBE_BASE.slice(), near = order()[0], u = USER_XYZ[user];
+      REG_XYZ.forEach((p, i) => {
+        const hot = i === sel, isNear = i === near;
+        for (let k = 0; k < 22; k++) objs.push({ t: 'l', a: arcPoint(u, p, k / 22, 0.22), b: arcPoint(u, p, (k + 1) / 22, 0.22), c: hot ? '--warn' : isNear ? '--ok' : '--primary', al: hot ? 0.95 : isNear ? 0.8 : 0.12, w: hot || isNear ? 2.2 : 1 });
+        objs.push({ t: 'd', p, r: hot ? 6 : 4.2, c: hot ? '--warn' : isNear ? '--ok' : '--primary', glow: true, id: 'r' + i });
+      });
+      objs.push({ t: 'd', p: u, r: 6, c: '--ink', glow: true });
+      const tgt = sel >= 0 ? sel : near, ph = (t * 0.35) % 1;
+      objs.push({ t: 'd', p: arcPoint(u, REG_XYZ[tgt], ph, 0.22), r: 3.6, c: '--warn', glow: true });
+      return objs;
+    }
+  });
+  if (!scene.supported) cv.replaceWith(el('<p class="callout warn">Your browser could not start the 3D view, so use the region list below instead.</p>'));
+  function draw() {
+    const near = order()[0];
+    list.innerHTML = order().map((i, rank) => `<button type="button" class="btn small" data-r="${i}" aria-pressed="${i === sel}">${esc(REGIONS[i][0])}: about ${rtt(user, i)} ms${rank === 0 ? ' (nearest)' : ''}</button>`).join('');
+    if (sel < 0) { status.className = 'vz-status'; status.textContent = `Nearest region to ${USER_SPOTS[user][0]}: ${REGIONS[near][0]} (${REGIONS[near][1]}) at about ${rtt(user, near)} ms round trip. Select any region to compare.`; }
+    else { const km = Math.round(kmBetween([USER_SPOTS[user][1], USER_SPOTS[user][2]], [REGIONS[sel][2], REGIONS[sel][3]])); status.className = 'vz-status ' + (sel === near ? 'ok' : ''); status.innerHTML = `<b>${esc(REGIONS[sel][0])}</b> (${esc(REGIONS[sel][1])}) is about ${km.toLocaleString()} km from ${esc(USER_SPOTS[user][0])}. Estimated round trip: about ${rtt(user, sel)} ms. Data must travel there and back, so distance adds delay. Illustrative values only.`; }
+    if (users.size >= 2 && seen.size >= 3) ctx.done();
+  }
+  function pick(i) { sel = i; seen.add(i); draw(); }
+  box.addEventListener('click', e => {
+    const r = e.target.closest('[data-r]'); if (r) return pick(+r.dataset.r);
+    const a = e.target.closest('[data-a]'); if (!a) return;
+    if (a.dataset.a === 'reset') return ctx.remount();
+    if (a.dataset.a === 'view') scene.resetView();
+    if (a.dataset.a === 'spin') { const on = !scene.st.spin; scene.setSpin(on); a.textContent = on ? 'Pause spin' : 'Start spin'; }
+  });
+  $('select', box).addEventListener('change', e => { user = +e.target.value; users.add(user); sel = -1; draw(); });
+  draw();
+};
+
+/* ---- bits, bytes and data units ---- */
+VIZ.binary = (box, cfg, ctx) => {
+  const W = [128, 64, 32, 16, 8, 4, 2, 1], bits = W.map(() => 0); let madeA = false, conv = false;
+  box.innerHTML = instr(cfg.instr) + `<div class="bitrow" role="group" aria-label="Eight bit switches">${W.map((v, i) => `<button type="button" class="bit" data-b="${i}" aria-pressed="false" aria-label="Bit worth ${v}"><span class="bv">${v}</span><span class="bs">0</span></button>`).join('')}</div>
+  <dl class="kv"><dt>Decimal value</dt><dd class="dec"></dd><dt>Hexadecimal</dt><dd class="hex"></dd><dt>Text character</dt><dd class="chr"></dd></dl>
+  <div class="vz-controls">${btn('inc', 'Add 1')}${btn('clr', 'Set all to 0')}${btn('a', 'Show me the letter A')}${btn('reset', 'Reset')}</div>
+  <h3>Data size converter</h3><div class="vz-row"><label for="${ctx.uid}n">Amount</label><input type="number" id="${ctx.uid}n" min="0" step="any" value="3"><label for="${ctx.uid}k">Unit</label><select id="${ctx.uid}k"><option value="1">Bytes</option><option value="1e3">KB</option><option value="1e6" selected>MB</option><option value="1e9">GB</option><option value="1e12">TB</option></select></div><div class="conv"></div>
+  <div class="vz-status" role="status" aria-live="polite">Build the number 65 and use the converter once.</div>`;
+  const val = () => bits.reduce((s, b, i) => s + b * W[i], 0), status = $('.vz-status', box), n = $('input', box), k = $('select', box);
+  function draw() {
+    $$('.bit', box).forEach((b, i) => { b.setAttribute('aria-pressed', !!bits[i]); $('.bs', b).textContent = bits[i]; });
+    const v = val(); $('.dec', box).textContent = v; $('.hex', box).textContent = '0x' + v.toString(16).toUpperCase().padStart(2, '0');
+    $('.chr', box).textContent = v >= 32 && v <= 126 ? `"${String.fromCharCode(v)}" (ASCII)` : 'Not a printable character';
+    if (v === 65) madeA = true;
+    const bytes = Math.max(0, +n.value || 0) * +k.value, fmt = x => x.toLocaleString('en-US', { maximumFractionDigits: 6 });
+    $('.conv', box).innerHTML = `<table class="tbl"><tbody><tr><td>Bits</td><td>${fmt(bytes * 8)}</td></tr><tr><td>Bytes</td><td>${fmt(bytes)}</td></tr><tr><td>KB</td><td>${fmt(bytes / 1e3)}</td></tr><tr><td>MB</td><td>${fmt(bytes / 1e6)}</td></tr><tr><td>GB</td><td>${fmt(bytes / 1e9)}</td></tr><tr><td>TB</td><td>${fmt(bytes / 1e12)}</td></tr></tbody></table><p class="muted">About ${fmt(Math.floor(bytes / 3e6))} photos of 3 MB each. This uses 1 KB = 1,000 bytes.</p>`;
+    status.className = 'vz-status ' + (madeA && conv ? 'ok' : ''); status.textContent = madeA && conv ? 'You built the letter A from bits and used the converter. Well done.' : `Letter A built: ${madeA ? 'yes' : 'not yet'}. Converter used: ${conv ? 'yes' : 'not yet'}.`;
+    if (madeA && conv) ctx.done();
+  }
+  const setBits = v => { W.forEach((w, i) => { bits[i] = v >= w ? 1 : 0; v -= bits[i] ? w : 0; }); };
+  box.addEventListener('click', e => {
+    const b = e.target.closest('.bit'); if (b) { bits[+b.dataset.b] ^= 1; return draw(); }
+    const a = e.target.closest('[data-a]'); if (!a) return;
+    if (a.dataset.a === 'inc') setBits((val() + 1) % 256); if (a.dataset.a === 'clr') setBits(0); if (a.dataset.a === 'a') setBits(65);
+    if (a.dataset.a === 'reset') return ctx.remount(); draw();
+  });
+  const on = () => { conv = true; draw(); }; n.addEventListener('input', on); k.addEventListener('change', on);
+  draw();
+};
+
+/* ---- add 3D views to existing visualizers ---- */
+const _dc = VIZ.datacenter;
+VIZ.datacenter = (box, cfg, ctx) => {
+  _dc(box, cfg, ctx);
+  const holder = el(`<div class="d3"><h3>3D view of your data center</h3><p class="muted">Drag to rotate, or focus the picture and use arrow keys. Glowing green outlines mean powered and cooled equipment.</p><canvas tabindex="0" role="img" aria-label="3D view of the data center racks. The status text above describes the same information."></canvas><div class="vz-controls"><button type="button" class="btn small" data-d="l">Rotate left</button><button type="button" class="btn small" data-d="r">Rotate right</button><button type="button" class="btn small" data-d="v">Reset view</button></div></div>`);
+  box.append(holder);
+  let objs = [];
+  const scene = Scene3D($('canvas', holder), { ratio: 0.5, yaw: -0.55, pitch: 0.42, spin: false, scale: 0.19, dist: 9, build: () => objs });
+  if (!scene.supported) { holder.innerHTML = '<p class="muted">3D view is not available in this browser. The flat view above shows the same data center.</p>'; }
+  box._d3 = (racks, st, hasSw) => {
+    const o = [], n = Math.max(racks.length, 1);
+    for (let i = -6; i <= 6; i++) { o.push({ t: 'l', a: [i * 0.7, 0, -4.2], b: [i * 0.7, 0, 4.2], c: '--line2', al: 0.25 }); o.push({ t: 'l', a: [-4.2, 0, i * 0.7], b: [4.2, 0, i * 0.7], c: '--line2', al: 0.25 }); }
+    if (!racks.length) o.push({ t: 't', p: [0, 1, 0], text: 'Empty room. Add a rack.', c: '--muted' });
+    racks.forEach((r, i) => {
+      const x = (i - (n - 1) / 2) * 1.5, pw = st.power > i, cl = st.cooling > i, up = pw && cl;
+      o.push({ t: 'b', p: [x, 1.1, 0], s: [1, 2.2, 1], c: up ? '--ok' : '--line2', al: 0.14, edge: up ? '--ok' : '--line2' });
+      r.forEach((d, k) => { const on = up && (d !== 'server' || hasSw); o.push({ t: 'b', p: [x, 0.3 + k * 0.5, 0.06], s: [0.86, 0.38, 0.86], c: d === 'server' ? '--primary' : d === 'switch' ? '--accent' : '--warn', al: on ? 0.55 : 0.18, edge: on ? '--ok' : '--line2' }); });
+      o.push({ t: 'b', p: [x - 0.25, 2.4, 0], s: [0.4, 0.18, 0.4], c: pw ? '--warn' : '--line2', al: 0.7 });
+      o.push({ t: 'b', p: [x + 0.25, 2.4, 0], s: [0.4, 0.18, 0.4], c: cl ? '--accent' : '--line2', al: 0.7 });
+      o.push({ t: 't', p: [x, 2.85, 0], text: 'Rack ' + (i + 1), c: '--ink' });
+    });
+    objs = o;
+  };
+  holder.addEventListener('click', e => { const b = e.target.closest('[data-d]'); if (!b) return; if (b.dataset.d === 'l') scene.rotate(-0.3, 0); if (b.dataset.d === 'r') scene.rotate(0.3, 0); if (b.dataset.d === 'v') scene.resetView(); });
+  box._redraw();
+};
+
+const _rs = VIZ.resp;
+VIZ.resp = (box, cfg, ctx) => {
+  _rs(box, cfg, ctx);
+  const pane = el(`<div class="st3-wrap"><h3>3D layer stack</h3><div class="vz-row"><label for="${ctx.uid}r">Rotate the stack</label><input type="range" id="${ctx.uid}r" min="-80" max="20" value="-35"></div><div class="st3-scene" aria-hidden="true"><div class="st3"></div></div><p class="muted">Each slab is one layer. The label on each slab says who manages it, and the table above says the same in text.</p></div>`);
+  box.append(pane);
+  const stack = $('.st3', pane);
+  box._r3 = (layers, m, lab) => { stack.innerHTML = layers.map((l, i) => `<div class="sl ${m.who[i]}" style="--i:${layers.length - 1 - i}">${esc(l)}: ${m.who[i] === 'you' ? 'you' : m.who[i] === 'prov' ? 'provider' : 'shared'}</div>`).join(''); };
+  $('input', pane).addEventListener('input', e => stack.style.setProperty('--rz', e.target.value + 'deg'));
+  stack.style.setProperty('--rz', '-35deg');
+  box._redraw();
+};
+
+/* ============ Home page 3D hero and tools ============ */
+const _rh = renderHome;
+renderHome = function () { _rh(); decorateHome(); };
+function decorateHome() {
+  const hero = $('.hero', main); if (!hero) return;
+  const li = levelInfo(S.xp), p = pctAll(), C = 2 * Math.PI * 34;
+  const card = el(`<section class="card hero3d" aria-label="Interactive 3D globe of cloud regions"><canvas tabindex="0" role="img" aria-label="Rotating 3D globe with cloud regions. Drag to rotate."></canvas>
+   <div class="hero3d-txt"><h2>The cloud is a real network of places</h2><p>Drag the globe. Each glowing point is a cloud region, a group of data centers.</p><div class="vz-controls"><button type="button" class="btn small" data-h="spin" aria-pressed="true">Pause spin</button><a class="btn small primary" href="#/module/4.5">Explore regions</a></div></div>
+   <div class="hud"><svg viewBox="0 0 80 80" width="84" height="84" role="img" aria-label="${p} percent of the course complete"><circle cx="40" cy="40" r="34" fill="none" stroke="var(--line)" stroke-width="7"/><circle cx="40" cy="40" r="34" fill="none" stroke="var(--primary)" stroke-width="7" stroke-linecap="round" stroke-dasharray="${(C * p / 100).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 40 40)"/><text x="40" y="45" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">${p}%</text></svg><div><b>${esc(li.name)}</b><br><span class="muted">${S.xp} XP</span></div></div></section>`);
+  hero.before(card);
+  const pairs = [[0, 7], [4, 5], [11, 8], [9, 3], [10, 11], [6, 4]];
+  const sc = Scene3D($('canvas', card), {
+    fill: true, yaw: 1.1, pitch: 0.28, scale: 0.36, ox: 150, spinSpeed: 0.22,
+    build: t => {
+      const o = GLOBE_BASE.slice();
+      pairs.forEach(([a, b], i) => { for (let k = 0; k < 20; k++) o.push({ t: 'l', a: arcPoint(REG_XYZ[a], REG_XYZ[b], k / 20, 0.25), b: arcPoint(REG_XYZ[a], REG_XYZ[b], (k + 1) / 20, 0.25), c: '--accent', al: 0.4, w: 1.3 }); o.push({ t: 'd', p: arcPoint(REG_XYZ[a], REG_XYZ[b], (t * 0.22 + i / pairs.length) % 1, 0.25), r: 3.2, c: '--warn', glow: true }); });
+      REG_XYZ.forEach(p => o.push({ t: 'd', p, r: 4, c: '--primary', glow: true }));
+      return o;
+    }
+  });
+  $('[data-h=spin]', card).addEventListener('click', e => { const on = !sc.st.spin; sc.setSpin(on); e.currentTarget.textContent = on ? 'Pause spin' : 'Start spin'; e.currentTarget.setAttribute('aria-pressed', on); });
+  hero.after(el(`<section class="card"><h2>Learning tools</h2><div class="cols"><a class="box tool" href="#/lab"><h3>Terminal lab</h3><p>Type simulated ping, DNS, subnet and Azure commands and see what they do.</p></a><a class="box tool" href="#/glossary"><h3>Glossary</h3><p>Search plain language definitions of every term in the course.</p></a><a class="box tool" href="#/cards"><h3>Flashcards</h3><p>Flip 3D cards to test yourself on key terms.</p></a></div><p class="muted">Tip: press Ctrl K (or Cmd K) anywhere to search modules, terms and tools.</p></section>`));
+}
+
+/* ============ Celebration effect ============ */
+function celebrate() {
+  if (reduceMotion()) return;
+  const cv = el('<canvas aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;z-index:95;pointer-events:none;border:0;background:transparent"></canvas>');
+  document.body.append(cv); const g = cv.getContext && cv.getContext('2d');
+  if (!g) { cv.remove(); return; }
+  const w = cv.width = innerWidth, h = cv.height = innerHeight, cs = getComputedStyle(document.documentElement);
+  const cols = ['--primary', '--accent', '--ok', '--warn'].map(n => cs.getPropertyValue(n).trim() || '#5cc8ff');
+  const ps = Array.from({ length: 90 }, () => ({ x: w / 2, y: h * 0.35, vx: (Math.random() - 0.5) * 12, vy: -Math.random() * 11 - 2, s: 4 + Math.random() * 5, c: cols[Math.floor(Math.random() * cols.length)], r: Math.random() * 6 }));
+  let f = 0;
+  (function tick() {
+    g.clearRect(0, 0, w, h); f++;
+    ps.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += 0.35; p.r += 0.2; g.save(); g.translate(p.x, p.y); g.rotate(p.r); g.fillStyle = p.c; g.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 0.6); g.restore(); });
+    if (f < 80) requestAnimationFrame(tick); else cv.remove();
+  })();
+}
+const _cm = completeModule;
+completeModule = function (id) { const was = isDone(id); _cm(id); if (!was && isDone(id)) celebrate(); };
+
+/* ============ Glossary, flashcards ============ */
+const GLOSS = [
+  ['Application', 'A program that helps you do a task, such as a browser or a spreadsheet.', '0.1'], ['CPU', 'The processor that carries out program instructions. Often called the brain of the computer.', '0.1'], ['RAM', 'Fast, temporary memory that holds the programs and data in use right now.', '0.1'], ['Storage', 'Long term place for files that stays when power is off, such as an SSD.', '0.1'], ['Operating system', 'Main software that manages hardware and lets applications run.', '0.1'], ['Hardware', 'The physical parts of a computer that you can touch.', '0.1'], ['Software', 'Instructions that tell hardware what to do.', '0.1'],
+  ['Bit', 'The smallest unit of data, either 0 or 1.', '0.3'], ['Byte', 'Eight bits. It can hold a value from 0 to 255.', '0.3'],
+  ['Client', 'A device or program that asks for data or a service.', '1.1'], ['Server', 'A computer or program that stores data or provides a service to clients.', '1.1'], ['Internet', 'A network of networks that connects devices around the world.', '1.1'], ['Packet', 'A small piece of data sent across a network.', '1.1'], ['IP address', 'A number that identifies a device on a network so data can be delivered to it.', '1.2'], ['IPv4', 'The older IP address format with four numbers from 0 to 255, such as 192.168.1.10.', '1.2'], ['IPv6', 'A newer IP address format with a much larger number of addresses.', '1.2'], ['Private IP address', 'An address used inside a local network, for example in 192.168.0.0/16, 10.0.0.0/8 or 172.16.0.0/12.', '1.2'], ['Public IP address', 'An address reachable on the internet.', '1.2'], ['MAC address', 'A hardware identifier tied to a network interface, used on the local network.', '1.3'], ['Network interface', 'The hardware or virtual adapter that connects a device to a network.', '1.3'], ['DNS', 'The Domain Name System, which turns names such as college.example into IP addresses.', '1.4'], ['Domain name', 'A human friendly name for a website or service.', '1.4'], ['HTTP', 'The protocol browsers and servers use to exchange web pages and data.', '1.5'], ['HTTPS', 'HTTP protected by encryption in transit.', '1.5'], ['Status code', 'A number in a web response that says what happened, such as 200, 404 or 500.', '1.5'],
+  ['LAN', 'Local area network covering a small area such as a home or lab.', '2.1'], ['WAN', 'Wide area network covering cities or countries.', '2.1'], ['Switch', 'Connects devices inside one local network and forwards data to the right device.', '2.2'], ['Router', 'Connects different networks and forwards data between them.', '2.2'], ['Default gateway', 'The router a device sends traffic to when the destination is on another network.', '2.2'], ['Port', 'A number that identifies a specific service on a device, such as 443 for HTTPS.', '2.3'], ['TCP', 'A reliable, connection based transport protocol.', '2.3'], ['UDP', 'A faster transport protocol with no delivery guarantee.', '2.3'], ['Firewall', 'A filter that allows or blocks network traffic by rules.', '2.3'], ['CIDR', 'A way to write a network as an address plus a prefix length, such as 192.168.1.0/24.', '2.4'], ['Subnet mask', 'A value that shows which part of an IPv4 address is the network and which part is the host.', '2.4'], ['Subnet', 'A smaller range of addresses carved out of a larger network.', '2.4'],
+  ['Data center', 'A facility with servers, storage, networking, power and cooling.', '3.1'], ['Rack', 'A frame that holds servers and other equipment in a data center.', '3.1'], ['Web server', 'A server that delivers web pages to browsers.', '3.2'], ['Application server', 'A server that runs the logic of an application.', '3.2'], ['Hypervisor', 'Software that shares one physical machine among several virtual machines.', '3.3'], ['Virtual machine', 'A software based computer with its own operating system running on shared hardware.', '3.3'],
+  ['Cloud computing', 'Using computing resources such as servers, storage and databases over the internet on demand.', '4.1'], ['On-premises', 'Infrastructure owned and run in your own building.', '4.1'], ['IaaS', 'Infrastructure as a service. You rent basic computing resources and manage the OS and above.', '4.2'], ['PaaS', 'Platform as a service. The provider manages the platform and you manage the app and data.', '4.2'], ['SaaS', 'Software as a service. You use a finished application over the internet.', '4.2'], ['Public cloud', 'Cloud services delivered by a provider to many customers over shared infrastructure.', '4.3'], ['Private cloud', 'Cloud style infrastructure used by one organization.', '4.3'], ['Hybrid cloud', 'A mix of on-premises or private infrastructure and public cloud.', '4.3'], ['Multicloud', 'Using services from more than one cloud provider.', '4.3'], ['Region', 'A geographic area with one or more data centers.', '4.4'], ['Availability zone', 'A physically separate location inside a region with independent power, cooling and networking.', '4.4'], ['Latency', 'The delay for data to travel and come back.', '4.4'], ['CapEx', 'Capital expenditure. Large upfront spending on physical assets.', '4.5'], ['OpEx', 'Operational expenditure. Ongoing spending that follows usage.', '4.5'],
+  ['Image', 'A template that contains an operating system and settings used to start a virtual machine.', '5.1'], ['Container', 'A lightweight package of an app and its dependencies that shares the host operating system.', '5.2'], ['Serverless', 'A model where your code runs in response to events and the provider manages the servers.', '5.2'],
+  ['Block storage', 'Raw storage divided into blocks, used as disks for servers and databases.', '6.1'], ['File storage', 'Storage organized as folders and files that many users can share.', '6.1'], ['Object storage', 'Storage for objects such as photos and backups, addressed by a key inside a bucket.', '6.1'], ['Bucket', 'A container for objects in object storage.', '6.2'], ['Object key', 'The unique name of an object inside a bucket.', '6.2'],
+  ['Database', 'An organized collection of data that programs can store, search and update.', '7.1'], ['Primary key', 'A column whose value uniquely identifies each record in a table.', '7.1'], ['SQL', 'A language for querying relational databases made of tables.', '7.1'], ['NoSQL', 'Databases that use flexible models such as documents or key value pairs.', '7.1'], ['Managed database', 'A database where the provider handles patching, backups and much of the availability work.', '7.2'],
+  ['Virtual network', 'A private network you define in the cloud, called a VNet or VCN.', '8.1'], ['Route table', 'Rules that decide where network traffic is sent.', '8.1'], ['Internet gateway', 'A cloud component that lets resources in a public subnet reach and be reached from the internet.', '8.1'], ['NAT gateway', 'Lets private resources start outbound connections without being reachable from the internet.', '8.1'], ['Load balancer', 'Spreads incoming traffic across several servers.', '8.3'], ['Horizontal scaling', 'Adding more servers or instances.', '8.3'], ['Vertical scaling', 'Giving one server more CPU or memory.', '8.3'],
+  ['Authentication', 'Proving who you are.', '9.1'], ['Authorization', 'Deciding what an identified user is allowed to do.', '9.1'], ['Least privilege', 'Giving only the permissions needed to do a job.', '9.1'], ['Encryption', 'Scrambling data with a key so only authorized parties can read it.', '9.2'], ['MFA', 'Multi-factor authentication. Signing in with more than one kind of proof.', '9.3'],
+  ['Pay-as-you-go', 'Paying for resources based on what you consume.', '10.1'], ['Scalability', 'The ability to handle more or less work by changing resources.', '10.2'], ['Elasticity', 'Scaling automatically and quickly as demand changes.', '10.2'],
+  ['High availability', 'Designing a service to stay online despite failures.', '11.1'], ['Single point of failure', 'One component whose failure stops the whole service.', '11.1'], ['RPO', 'Recovery point objective. How much recent data you can afford to lose.', '11.2'], ['RTO', 'Recovery time objective. How long you can afford to be down.', '11.2'], ['Disaster recovery', 'Plans and tools to restore service after a major failure.', '11.2'],
+  ['Microsoft Azure', 'Microsoft cloud platform with many services.', '12.1'], ['Subscription', 'An Azure agreement and billing boundary that holds resources.', '12.1'], ['Resource group', 'A logical container for related Azure resources.', '12.1'], ['Network security group', 'Azure rules that allow or deny network traffic to resources in a virtual network.', '12.4'], ['Azure Blob Storage', 'Azure object storage for unstructured data.', '12.3'], ['Microsoft Entra ID', 'Azure identity service for sign in and access.', '12.5'], ['Azure RBAC', 'Role based access control that grants permissions through role assignments.', '12.5'], ['Azure Key Vault', 'A service for storing secrets, keys and certificates.', '12.5'], ['Azure Policy', 'A service that enforces rules and checks compliance for resources.', '12.5'], ['Microsoft Defender for Cloud', 'A service that helps assess and improve cloud security posture and detect threats.', '12.5'], ['Tag', 'A name and value pair attached to a resource to organize and track cost.', '12.6']
+].sort((a, b) => a[0].localeCompare(b[0]));
+
+function renderGlossary(q) {
+  curId = null;
+  main.innerHTML = `<h1>Glossary</h1><section class="card"><p>Plain language definitions for every big term in the course. Type to filter.</p><div class="vz-row"><label for="glq">Search terms</label><input type="search" id="glq" value="${esc(q || '')}" autocomplete="off"><span class="muted" id="glc"></span></div><dl class="gl" id="gll"></dl></section>`;
+  const inp = $('#glq'), list = $('#gll');
+  function draw() {
+    const s = inp.value.trim().toLowerCase(), items = GLOSS.filter(g => !s || g[0].toLowerCase().includes(s) || g[1].toLowerCase().includes(s));
+    $('#glc').textContent = `${items.length} of ${GLOSS.length} terms`;
+    list.innerHTML = items.length ? items.map(g => `<div class="gl-item"><dt>${esc(g[0])}</dt><dd>${esc(g[1])} <a href="#/module/${g[2]}">Learn more: ${g[2]} ${esc(MOD[g[2]] ? MOD[g[2]].title : '')}</a></dd></div>`).join('') : '<p class="muted">No terms match. Try a shorter search.</p>';
+  }
+  inp.addEventListener('input', draw); draw();
+  award('tool:glossary', 3);
+}
+
+function renderCards() {
+  curId = null;
+  let deck = shuffle(GLOSS), i = 0, known = 0, flipped = false;
+  main.innerHTML = `<h1>Flashcards</h1><section class="card"><p>Read the term, think of the meaning, then flip the card. Be honest with yourself: mistakes here cost nothing.</p><div id="fcHost"></div></section>`;
+  const host = $('#fcHost');
+  function draw() {
+    if (i >= deck.length) {
+      award('cards:done', 10, 'Flashcards finished');
+      host.innerHTML = `<div class="summary"><b>Deck finished.</b> You knew ${known} of ${deck.length} cards.<div class="row">${btn('again', 'Study a new shuffled deck', 'primary')}</div></div>`; return;
+    }
+    const c = deck[i];
+    host.innerHTML = `<p class="muted" aria-live="polite">Card ${i + 1} of ${deck.length}. Known so far: ${known}.</p><div class="fc ${flipped ? 'flip' : ''}"><div class="fc-in"><div class="fc-face fc-front" aria-hidden="${flipped}"><span class="muted">Term</span><strong>${esc(c[0])}</strong></div><div class="fc-face fc-back" aria-hidden="${!flipped}"><span class="muted">Meaning</span><p>${esc(c[1])}</p><a href="#/module/${c[2]}">Module ${c[2]}</a></div></div></div>
+     <div class="vz-controls fc-ctl">${btn('flip', flipped ? 'Show term' : 'Flip card', 'primary')}${flipped ? btn('yes', 'I knew it') + btn('no', 'Practice this again') : ''}</div>`;
+  }
+  host.addEventListener('click', e => {
+    const b = e.target.closest('[data-a]'); if (!b) return; const a = b.dataset.a;
+    if (a === 'flip') {
+      flipped = !flipped; const fc = $('.fc', host); fc.classList.toggle('flip', flipped);
+      $('.fc-front', fc).setAttribute('aria-hidden', flipped); $('.fc-back', fc).setAttribute('aria-hidden', !flipped);
+      $('.fc-ctl', host).innerHTML = btn('flip', flipped ? 'Show term' : 'Flip card', 'primary') + (flipped ? btn('yes', 'I knew it') + btn('no', 'Practice this again') : ''); return;
+    }
+    if (a === 'yes') { known++; i++; flipped = false; draw(); }
+    if (a === 'no') { deck.push(deck[i]); i++; flipped = false; draw(); }
+    if (a === 'again') { deck = shuffle(GLOSS); i = 0; known = 0; flipped = false; draw(); }
+  });
+  draw();
+}
+
+/* ============ Terminal lab (fully simulated) ============ */
+const LAB = { lines: [], hist: [], hp: 0, groups: [], vms: [], cmds: new Set() };
+const LAB_DNS = { 'college.example': '203.0.113.10', 'shop.example': '198.51.100.20', 'video.example': '192.0.2.30', 'exam.example': '203.0.113.99', 'azure.example': '198.51.100.77', localhost: '127.0.0.1' };
+const LAB_LOCS = ['centralindia', 'southindia', 'westindia', 'eastus', 'westeurope', 'japaneast', 'australiaeast'];
+function labRun(line) {
+  const args = line.trim().split(/\s+/).filter(Boolean); if (!args.length) return [];
+  const cmd = args[0].toLowerCase(), flag = n => { const i = args.indexOf(n); return i > -1 ? args[i + 1] : undefined; }, out = [];
+  const resolve = h => LAB_DNS[h] || (IP.toN(h) !== null ? h : null);
+  if (cmd === 'help') return ['Simulated commands (nothing real is contacted):', '  help                      show this list', '  whoami                    show the current user', '  ipconfig                  show simulated network settings', '  nslookup <domain>         look up a simulated DNS record', '  ping <host>               send simulated test packets', '  traceroute <host>         show simulated hops', '  curl <url>                make a simulated web request', '  subnet <cidr>             calculate a subnet, for example subnet 10.0.0.0/24', '  binary <0-255>            convert a number to 8 bits', '  decimal <bits>            convert up to 8 bits to a number', '  az group create --name NAME --location centralindia', '  az group list | az group delete --name NAME --yes', '  az vm create --resource-group RG --name VM', '  az vm list | az vm stop --name VM --resource-group RG', '  history, clear', 'Known hosts: ' + Object.keys(LAB_DNS).join(', ')];
+  if (cmd === 'whoami') return ['student@cloudquest (simulated learner account)'];
+  if (cmd === 'ipconfig' || (cmd === 'ip' && args[1] === 'addr')) return ['Adapter: Wi-Fi (simulated)', '  IPv4 address . . . : 192.168.1.10', '  Subnet mask  . . . : 255.255.255.0 (/24)', '  Default gateway  . : 192.168.1.1', '  MAC address  . . . : 3C:22:FB:8A:01:5E'];
+  if (cmd === 'nslookup') { const d = args[1]; if (!d) return ['Usage: nslookup <domain>']; return LAB_DNS[d] ? ['Server:  192.168.1.1 (simulated resolver)', 'Name:    ' + d, 'Address: ' + LAB_DNS[d]] : ["Cannot find '" + d + "': non-existent domain (in this simulation). Try college.example."]; }
+  if (cmd === 'ping') { const h = args[1]; if (!h) return ['Usage: ping <host>']; const ip = resolve(h); if (!ip) return ['ping: cannot resolve ' + h + ': unknown host']; const base = ip === '127.0.0.1' ? 0.1 : 12 + Math.floor(Math.random() * 20); for (let i = 0; i < 4; i++) out.push(`Reply from ${ip}: bytes=32 time=${(base + Math.random() * 4).toFixed(1)}ms`); out.push('4 packets sent, 4 received, 0% loss (simulated)'); return out; }
+  if (cmd === 'traceroute') { const h = args[1]; if (!h) return ['Usage: traceroute <host>']; const ip = resolve(h); if (!ip) return ['traceroute: unknown host ' + h]; return ['1  192.168.1.1   (your home router)   1 ms', '2  10.20.0.1      (internet provider)  8 ms', '3  203.0.113.9    (regional network)   15 ms', '4  ' + ip + '   (destination)       ' + (22 + Math.floor(Math.random() * 10)) + ' ms']; }
+  if (cmd === 'curl') { const m = /^(https?):\/\/([^/]+)(\/.*)?$/.exec(args[1] || ''); if (!m) return ['Usage: curl https://college.example/home']; if (!LAB_DNS[m[2]]) return ['curl: could not resolve host ' + m[2]]; const path = m[3] || '/', ok = ['/', '/home', '/courses'].includes(path); return [(ok ? 'HTTP/1.1 200 OK' : 'HTTP/1.1 404 Not Found'), 'Content-Type: text/html', m[1] === 'https' ? '(connection encrypted with TLS)' : '(WARNING: plain HTTP is not encrypted)', '', ok ? '<html>College page for ' + path + '</html>' : 'Nothing exists at ' + path]; }
+  if (cmd === 'subnet') { const c = IP.cidr(args[1]); if (!c) return ['Usage: subnet 192.168.1.0/24']; const f = c.prefix >= 31 ? c.net : c.net + 1, l = c.prefix >= 31 ? c.bcast : c.bcast - 1; return ['Network    : ' + IP.toS(c.net) + '/' + c.prefix, 'Mask       : ' + IP.toS(c.mask), 'Broadcast  : ' + IP.toS(c.bcast), 'Host range : ' + IP.toS(f) + ' to ' + IP.toS(l), 'Usable IPs : ' + IP.usable(c).toLocaleString()]; }
+  if (cmd === 'binary') { const n = +args[1]; if (!Number.isInteger(n) || n < 0 || n > 255) return ['Usage: binary <number from 0 to 255>']; return [n + ' = ' + n.toString(2).padStart(8, '0')]; }
+  if (cmd === 'decimal') { const b = args[1] || ''; if (!/^[01]{1,8}$/.test(b)) return ['Usage: decimal 01000001']; return [b + ' = ' + parseInt(b, 2)]; }
+  if (cmd === 'history') return LAB.hist.length ? LAB.hist.map((h, i) => `${i + 1}  ${h}`) : ['No commands yet.'];
+  if (cmd === 'az') {
+    const sub = (args[1] || '') + ' ' + (args[2] || '');
+    if (sub === 'group create') { const n = flag('--name'), loc = flag('--location'); if (!n || !loc) return ['Usage: az group create --name NAME --location centralindia']; if (!/^[\w.()-]{1,90}$/.test(n)) return ['Error: invalid resource group name.']; if (!LAB_LOCS.includes(loc)) return ['Error: location not found in this simulation. Try: ' + LAB_LOCS.join(', ')]; if (LAB.groups.find(g => g.n === n)) return ['Error: group ' + n + ' already exists.']; LAB.groups.push({ n, loc }); return ['{', '  "name": "' + n + '",', '  "location": "' + loc + '",', '  "properties": { "provisioningState": "Succeeded" }', '}']; }
+    if (sub === 'group list') return LAB.groups.length ? ['Name            Location', ...LAB.groups.map(g => g.n.padEnd(15) + ' ' + g.loc)] : ['[]  (no resource groups yet)'];
+    if (sub === 'group delete') { const n = flag('--name'); if (!n) return ['Usage: az group delete --name NAME --yes']; if (!LAB.groups.find(g => g.n === n)) return ['Error: resource group ' + n + ' not found.']; if (!args.includes('--yes')) return ['Deleting removes everything inside the group. Add --yes to confirm.']; LAB.groups = LAB.groups.filter(g => g.n !== n); LAB.vms = LAB.vms.filter(v => v.rg !== n); return ['Resource group ' + n + ' and all resources inside it were deleted.']; }
+    if (sub === 'vm create') { const rg = flag('--resource-group'), n = flag('--name'); if (!rg || !n) return ['Usage: az vm create --resource-group RG --name VM']; if (!LAB.groups.find(g => g.n === rg)) return ['Error: resource group ' + rg + ' not found. Create it first with az group create.']; if (LAB.vms.find(v => v.n === n && v.rg === rg)) return ['Error: VM ' + n + ' already exists.']; const ip = '10.0.0.' + (4 + LAB.vms.length); LAB.vms.push({ n, rg, state: 'running', ip }); return ['{', '  "name": "' + n + '",', '  "resourceGroup": "' + rg + '",', '  "powerState": "VM running",', '  "privateIpAddress": "' + ip + '"', '}']; }
+    if (sub === 'vm list') { const rg = flag('--resource-group'), v = LAB.vms.filter(x => !rg || x.rg === rg); return v.length ? ['Name      ResourceGroup   State     PrivateIP', ...v.map(x => x.n.padEnd(9) + ' ' + x.rg.padEnd(15) + ' ' + x.state.padEnd(9) + ' ' + x.ip)] : ['[]  (no virtual machines)']; }
+    if (sub === 'vm stop') { const rg = flag('--resource-group'), n = flag('--name'), v = LAB.vms.find(x => x.n === n && x.rg === rg); if (!v) return ['Error: VM not found. Give --name and --resource-group.']; v.state = 'stopped'; return ['VM ' + n + ' stopped. Compute billing usually pauses only when a VM is deallocated, and disks are still billed.']; }
+    return ['Unknown az command in this simulation. Type help.'];
+  }
+  return [cmd + ': command not found. Type help to see commands.'];
+}
+function renderLab() {
+  curId = null;
+  main.innerHTML = `<h1>Terminal lab</h1><section class="card"><p>A safe, simulated command line. It never contacts a real network or a real Azure account. Try the ideas from the lessons with commands.</p>
+   <div class="vz-row"><b>Try:</b>${['nslookup college.example', 'ping college.example', 'traceroute shop.example', 'subnet 10.0.0.0/26', 'binary 65', 'curl https://college.example/home', 'az group create --name rg-demo --location centralindia', 'az vm create --resource-group rg-demo --name web1', 'az vm list'].map(c => `<button type="button" class="btn small" data-cmd="${esc(c)}">${esc(c)}</button>`).join('')}</div>
+   <div class="term" role="log" aria-live="polite" aria-label="Terminal output" id="termOut" tabindex="0"></div>
+   <form class="term-in" id="termForm" autocomplete="off"><label for="termIn"><span class="pr">student@cloudquest:~$</span></label><input type="text" id="termIn" spellcheck="false" autocapitalize="off" aria-describedby="termHint"><button type="submit" class="btn primary">Run</button></form><p class="muted" id="termHint">Type help and press Enter. Use the up and down arrows for history. Commands used: <span id="termCount">0</span> of 5 for the badge.</p></section>`;
+  const outEl = $('#termOut'), inp = $('#termIn');
+  function paint() { outEl.innerHTML = LAB.lines.map(l => l.cmd !== undefined ? `<div><span class="pr">student@cloudquest:~$</span> ${esc(l.cmd)}</div><pre>${esc(l.out.join('\n'))}</pre>` : '').join('') || '<div class="muted">Ready. Type help to begin.</div>'; outEl.scrollTop = outEl.scrollHeight; $('#termCount').textContent = LAB.cmds.size; }
+  function run(c) {
+    const cmd = c.trim(); if (!cmd) return;
+    if (cmd.toLowerCase() === 'clear') { LAB.lines = []; paint(); return; }
+    LAB.hist.push(cmd); LAB.hp = LAB.hist.length;
+    const out = labRun(cmd); LAB.lines.push({ cmd, out });
+    LAB.cmds.add(cmd.split(/\s+/).slice(0, cmd.toLowerCase().startsWith('az') ? 3 : 1).join(' ').toLowerCase());
+    award('lab:first', 5, 'First command run'); if (LAB.cmds.size >= 5) { award('lab:five', 15, 'Terminal explorer'); checkBadges(); }
+    paint();
+  }
+  $('#termForm').addEventListener('submit', e => { e.preventDefault(); run(inp.value); inp.value = ''; inp.focus(); });
+  inp.addEventListener('keydown', e => { if (e.key === 'ArrowUp') { e.preventDefault(); LAB.hp = Math.max(0, LAB.hp - 1); inp.value = LAB.hist[LAB.hp] || ''; } if (e.key === 'ArrowDown') { e.preventDefault(); LAB.hp = Math.min(LAB.hist.length, LAB.hp + 1); inp.value = LAB.hist[LAB.hp] || ''; } });
+  main.addEventListener('click', e => { const b = e.target.closest('[data-cmd]'); if (b && $('#termIn')) { inp.value = b.dataset.cmd; inp.focus(); } });
+  paint(); inp.focus({ preventScroll: true });
+}
+BADGES.push({ id: 'lab', name: 'Terminal Explorer', desc: 'Run 5 different commands in the Terminal lab.', test: () => !!S.awarded['lab:five'] });
+
+/* ============ Search palette (Ctrl K) ============ */
+(function palette() {
+  const pal = el(`<div class="pal" id="palette" hidden><div class="pal-box" role="dialog" aria-modal="true" aria-label="Search CloudQuest"><label for="palIn" class="sr">Search modules, terms and tools</label><input type="search" id="palIn" placeholder="Search modules, terms and tools" autocomplete="off" aria-controls="palList"><ul id="palList" role="listbox" aria-label="Results"></ul><p class="muted">Enter opens the selected result. Escape closes.</p></div></div>`);
+  document.body.append(pal);
+  const inp = $('#palIn', pal), list = $('#palList', pal); let act = 0, items = [], prevFocus = null;
+  const TOOLS = [['Home', '#/home', 'Dashboard'], ['Practice quiz', '#/practice', 'Mixed questions'], ['Progress and badges', '#/progress', 'Your stats'], ['Glossary', '#/glossary', 'Term definitions'], ['Terminal lab', '#/lab', 'Simulated commands'], ['Flashcards', '#/cards', 'Flip cards to study']];
+  function build(q) {
+    q = q.trim().toLowerCase(); const r = [];
+    TOOLS.forEach(t => { if (!q || t[0].toLowerCase().includes(q)) r.push({ label: t[0], sub: t[2], href: t[1], kind: 'Tool' }); });
+    MODS.forEach(m => { if (!q || (m.id + ' ' + m.title + ' ' + m.sub).toLowerCase().includes(q)) r.push({ label: m.id + ' ' + m.title, sub: m.sub, href: '#/module/' + m.id, kind: 'Module' }); });
+    if (q) GLOSS.forEach(g => { if (g[0].toLowerCase().includes(q)) r.push({ label: g[0], sub: g[1], href: '#/glossary/' + encodeURIComponent(g[0]), kind: 'Term' }); });
+    items = r.slice(0, 14); act = 0; draw();
+  }
+  function draw() { list.innerHTML = items.length ? items.map((it, i) => `<li role="option" id="pal${i}" aria-selected="${i === act}" data-i="${i}"><span class="chip">${it.kind}</span><b>${esc(it.label)}</b><span class="muted"> ${esc(it.sub)}</span></li>`).join('') : '<li class="muted">No results. Try another word.</li>'; inp.setAttribute('aria-activedescendant', items.length ? 'pal' + act : ''); const a = $('[aria-selected=true]', list); if (a && a.scrollIntoView) a.scrollIntoView({ block: 'nearest' }); }
+  function open() { prevFocus = document.activeElement; pal.hidden = false; inp.value = ''; build(''); inp.focus(); }
+  function close() { pal.hidden = true; if (prevFocus && prevFocus.focus) prevFocus.focus(); }
+  function go(i) { const it = items[i]; if (!it) return; close(); location.hash = it.href; }
+  inp.addEventListener('input', () => build(inp.value));
+  pal.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); act = Math.min(items.length - 1, act + 1); draw(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); act = Math.max(0, act - 1); draw(); }
+    else if (e.key === 'Enter') { e.preventDefault(); go(act); }
+    else if (e.key === 'Tab') { e.preventDefault(); inp.focus(); }
+  });
+  list.addEventListener('click', e => { const li = e.target.closest('[data-i]'); if (li) go(+li.dataset.i); });
+  pal.addEventListener('mousedown', e => { if (e.target === pal) close(); });
+  $('#searchBtn').addEventListener('click', open);
+  document.addEventListener('keydown', e => {
+    const typing = /^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || '')) || e.target.isContentEditable;
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); pal.hidden ? open() : close(); }
+    else if (e.key === '/' && !typing && pal.hidden) { e.preventDefault(); open(); }
+    else if (document.body.classList.contains('present') && !typing && pal.hidden && (e.key === '[' || e.key === ']')) stepModule(e.key === ']' ? 1 : -1);
+  });
+})();
+
+/* ============ 3D card tilt and tools nav state ============ */
+(function tilt() {
+  const fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!fine) return;
+  const SEL = '.lv-card,.badge,.stat,.tool,.xp-item';
+  document.addEventListener('pointermove', e => {
+    if (reduceMotion()) return; const t = e.target.closest && e.target.closest(SEL); if (!t) return;
+    const r = t.getBoundingClientRect(); t.style.setProperty('--ry', (((e.clientX - r.left) / r.width - 0.5) * 8).toFixed(2) + 'deg'); t.style.setProperty('--rx', ((0.5 - (e.clientY - r.top) / r.height) * 8).toFixed(2) + 'deg');
+  });
+  document.addEventListener('pointerout', e => { const t = e.target.closest && e.target.closest(SEL); if (t) { t.style.setProperty('--rx', '0deg'); t.style.setProperty('--ry', '0deg'); } });
+})();
+function markTools() { $$('#tools a').forEach(a => { if (location.hash.indexOf(a.getAttribute('href')) === 0) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }); }
+window.addEventListener('hashchange', markTools); markTools();
 init();
 })();
 </script>
