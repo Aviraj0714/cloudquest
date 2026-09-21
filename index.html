@@ -361,6 +361,101 @@ kbd{font-family:ui-monospace,Consolas,monospace;font-size:.72rem;padding:.05rem 
 [data-theme=future] .toast{background:var(--surface);color:var(--ink);border:1.5px solid var(--primary)}
 [data-theme=future] .opt:hover:not(:disabled){box-shadow:0 0 14px rgba(92,200,255,.25)}
 @media (prefers-reduced-motion:reduce){.fc-in,.st3{transition:none}}
+
+/* ================= Clean pass: calmer, more spacious ================= */
+body{line-height:1.7}
+.topbar{padding:.4rem 1rem;gap:.6rem}
+.tb-progress{max-width:200px}
+.tb-nav{gap:.3rem}
+#searchBtn kbd{margin-left:.35rem}
+.card{border:1px solid var(--line);border-radius:18px;padding:1.6rem 1.8rem;margin-bottom:1.1rem;box-shadow:none}
+.card.hero3d{padding:0}
+.card.hero3d canvas{background:transparent}
+.btn.big{min-height:52px;padding:.6rem 1.4rem;font-size:1.05rem}
+.xp-card{background:none;border:0;padding:.2rem .5rem;margin-bottom:.6rem}
+.tools{grid-template-columns:1fr 1fr;gap:.1rem;margin-bottom:.8rem}
+.tools a{border:0;background:none;justify-content:flex-start;padding:.2rem .6rem;font-size:.92rem;border-radius:8px}
+.tools a:hover{background:var(--surface2)}
+.tools a[aria-current=page]{background:var(--primary-soft)}
+.vz-instr{background:transparent;border-left:3px solid var(--primary);border-radius:0;padding:.2rem .9rem}
+.q-meta .chip:nth-child(2){display:none}
+.q{border-color:var(--line);box-shadow:none}
+.callout{background:transparent;border:1px solid var(--line);border-left:4px solid var(--accent)}
+
+/* lesson layout */
+.module{max-width:920px;margin:0 auto}
+body.present .module{max-width:none}
+.mod-head{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:1rem;align-items:center;margin-bottom:.4rem}
+.mod-head h1{margin-bottom:.2rem}
+.emblem{width:210px;height:auto;border:0;background:transparent!important;cursor:grab}
+.mtabs{display:flex;gap:.25rem;padding:.3rem;background:var(--surface2);border-radius:14px;margin:.8rem 0 1.3rem;overflow-x:auto}
+.mtab{flex:1;min-height:46px;border:0;background:transparent;border-radius:10px;font:inherit;color:var(--muted);cursor:pointer;display:flex;gap:.45rem;align-items:center;justify-content:center;white-space:nowrap;padding:0 .8rem}
+.mtab:hover{color:var(--ink)}
+.mtab[aria-selected=true]{background:var(--surface);color:var(--ink);font-weight:700;box-shadow:0 1px 5px rgba(0,0,0,.16)}
+.mn{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--surface);border:1px solid var(--line2);font-size:.8rem}
+.mtab[aria-selected=true] .mn{background:var(--primary);color:var(--primary-ink);border-color:var(--primary)}
+.mdone{font-size:.72rem;color:var(--ok);font-weight:700}
+.panels{display:block}
+.panel{display:none}
+.panel.on{display:block}
+body.present article[data-tab=learn] #pn-try,body.present article[data-tab=try] #pn-learn{display:block}
+body.present article[data-tab=learn] .panels,body.present article[data-tab=try] .panels{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:1.2rem;align-items:start}
+.panel-nav{display:flex;justify-content:flex-end;margin:.4rem 0 1rem}
+.read .sec{margin-top:1.7rem}
+.read .sec h2{font-size:1.15rem}
+.read .goals{margin:.2rem 0 .6rem;padding-left:1.2rem}
+.mist-d summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.mist-d .mist{margin-top:.4rem}
+.mod-nav{margin-top:.6rem}
+
+/* home */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem}
+.toollist{list-style:none;margin:0 0 .8rem;padding:0}
+.toollist li{display:flex;justify-content:space-between;gap:1rem;align-items:center;min-height:44px;border-bottom:1px solid var(--line)}
+.toollist li:last-child{border-bottom:0}
+.lv-list summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700}
+.lv-list ul{margin:.2rem 0;padding-left:1.2rem}
+.hero3d-txt h1{font-size:2.2rem;margin-bottom:.3rem}
+
+/* new labs */
+.tree-list{display:grid;gap:2px}
+.tree-item{text-align:left;min-height:44px;border:0;border-radius:8px;background:transparent;color:var(--ink);font:inherit;cursor:pointer;padding-right:.6rem}
+.tree-item:hover{background:var(--surface2)}
+.tree-item.sel{background:var(--primary-soft);font-weight:700;box-shadow:inset 3px 0 0 var(--primary)}
+.wp{padding:.8rem;border:1px dashed var(--line2);border-radius:12px;background:var(--surface)}
+.wp-h{font-size:1.3rem;margin:.2rem 0}
+.wp.styled .wp-h,.wp.styled .wp-p{color:#0f6cbd;text-align:center}
+[data-theme=future] .wp.styled .wp-h,[data-theme=dark] .wp.styled .wp-h{color:#8cc8ff}
+.wp.styled .wp-p{color:var(--ink)}
+.wp.styled .wp-b{background:#0f6cbd;color:#fff;border-color:#0f6cbd;display:block;margin:0 auto}
+.code{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;overflow:auto;font-family:ui-monospace,Consolas,monospace;font-size:.9rem;white-space:pre-wrap}
+.proc{display:grid;grid-template-columns:120px minmax(0,1fr) 170px;gap:.7rem;align-items:center;margin:.4rem 0}
+.view3d{margin-top:1rem;border:1px solid var(--line);border-radius:14px;padding:.4rem .9rem .8rem}
+.view3d summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+
+/* onboarding cube */
+.cube-wrap{perspective:700px;height:130px;display:grid;place-items:center;margin:.2rem 0 1rem}
+.cube{position:relative;width:80px;height:80px;transform-style:preserve-3d;animation:cubespin 16s linear infinite}
+.cube span{position:absolute;inset:0;display:grid;place-items:center;font-size:.78rem;font-weight:700;color:var(--ink);border:1.5px solid var(--primary);background:var(--primary-soft)}
+.cube .f1{transform:translateZ(40px)}.cube .f2{transform:rotateY(90deg) translateZ(40px)}.cube .f3{transform:rotateY(180deg) translateZ(40px)}.cube .f4{transform:rotateY(-90deg) translateZ(40px)}.cube .f5{transform:rotateX(90deg) translateZ(40px)}.cube .f6{transform:rotateX(-90deg) translateZ(40px)}
+@keyframes cubespin{from{transform:rotateX(-22deg) rotateY(0)}to{transform:rotateX(-22deg) rotateY(360deg)}}
+
+/* future theme: quieter */
+[data-theme=future] .card::before,[data-theme=future] .card::after{display:none}
+[data-theme=future] body::before{opacity:.45}
+[data-theme=future] .btn.primary{box-shadow:0 0 14px rgba(92,200,255,.22)}
+[data-theme=future] .bar>i{background:var(--primary)}
+[data-theme=future] .hero-main{background:none}
+[data-theme=future] .card{box-shadow:none;background:rgba(14,24,50,.62)}
+
+@media (max-width:760px){
+ .mod-head{grid-template-columns:1fr}
+ .emblem{width:170px;margin:0 auto}
+ .mtab{padding:0 .5rem;font-size:.9rem}
+ .mtab .mn{display:none}
+ .proc{grid-template-columns:1fr}
+ .card{padding:1.2rem 1.1rem}
+}
 </style>
 </head>
 <body>
@@ -377,17 +472,14 @@ kbd{font-family:ui-monospace,Consolas,monospace;font-size:.72rem;padding:.05rem 
   </div>
   <nav class="tb-nav" aria-label="Main">
     <button type="button" class="btn small" id="searchBtn" aria-haspopup="dialog">Search <kbd>Ctrl K</kbd></button>
-    <a class="btn small" href="#/home">Home</a>
-    <a class="btn small" href="#/practice">Practice quiz</a>
-    <a class="btn small" href="#/progress">Progress</a>
-    <button type="button" class="btn small" id="instBtn" aria-pressed="false">Instructor mode</button>
-    <button type="button" class="btn small" id="themeBtn" aria-label="Switch color theme">Dark theme</button>
+    <button type="button" class="btn small" id="instBtn" aria-pressed="false">Instructor</button>
+    <button type="button" class="btn small" id="themeBtn" aria-label="Switch color theme">Theme</button>
   </nav>
 </header>
 <div class="shell">
   <aside id="sidebar" aria-label="Learning roadmap sidebar">
     <div class="xp-card" id="xpCard" aria-live="polite"></div>
-    <nav id="tools" class="tools" aria-label="Learning tools"><a href="#/glossary">Glossary</a><a href="#/lab">Terminal lab</a><a href="#/cards">Flashcards</a></nav>
+    <nav id="tools" class="tools" aria-label="Explore"><a href="#/home">Home</a><a href="#/practice">Practice quiz</a><a href="#/progress">Progress</a><a href="#/glossary">Glossary</a><a href="#/lab">Terminal lab</a><a href="#/cards">Flashcards</a></nav>
     <nav id="roadmap" aria-label="Learning roadmap"></nav>
   </aside>
   <main id="main" tabindex="-1"></main>
@@ -855,6 +947,7 @@ VIZ.connector = (box, cfg, ctx) => {
   const svg = $('svg', box), edges = $('.edges', svg), nds = $('.nds', svg), pkt = $('.pkt', svg), status = $('.vz-status', box), detail = $('.xp-detail', box);
   const say = (t, c) => { status.className = 'vz-status ' + (c || ''); status.innerHTML = t; };
   function draw() {
+    if (box._c3) box._c3(nodes, have, need, sel);
     edges.innerHTML = [...have].map(k => { const [a, b] = k.split('|').map(pos); return `<line class="edge ${need.has(k) ? 'on' : 'bad'}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/>`; }).join('');
     nds.innerHTML = nodes.map(n => nodeSvg(n, 'click' + (sel === n.id ? ' sel' : ''), cfg.nw || 124)).join('');
     const missing = [...need].filter(k => !have.has(k)).length, extra = [...have].filter(k => !need.has(k)).length;
@@ -889,6 +982,7 @@ VIZ.connector = (box, cfg, ctx) => {
     else if (sel === id) { sel = null; draw(); }
     else { const k = key(sel, id); have.has(k) ? have.delete(k) : have.add(k); sel = null; draw(); }
   });
+  box._redraw = () => draw();
   draw();
 };
 /* ---- data center builder ---- */
@@ -954,7 +1048,9 @@ VIZ.vmhost = (box, cfg, ctx) => {
    <div class="vz-status" role="status" aria-live="polite">The host has ${CAP.cpu} vCPU, ${CAP.ram} GB RAM and ${CAP.disk} GB storage to share.</div>`;
   const status = $('.vz-status', box), g = k => $('#' + ctx.uid + k, box);
   const used = k => vms.reduce((s, v) => s + v[k], 0);
+  box._redraw = () => draw();
   function draw() {
+    if (box._v3) box._v3(vms, CAP);
     $('.hostmeters', box).innerHTML = [['cpu', 'vCPU', ''], ['ram', 'RAM', ' GB'], ['disk', 'Storage', ' GB']].map(([k, l, u]) => { const p = Math.round(100 * used(k) / CAP[k]); return `<div>${l}: <b>${used(k)}${u} of ${CAP[k]}${u}</b> (${p}%)<div class="gauge ${p > 85 ? 'warn' : ''}"><i style="width:${p}%"></i></div></div>`; }).join('');
     $('.vmlist', box).innerHTML = vms.length ? vms.map((v, i) => `<span class="vmblock">${esc(v.name)}: ${v.cpu} vCPU, ${v.ram} GB, ${v.disk} GB, ${esc(v.os)} <button type="button" class="btn small" data-del="${i}" aria-label="Delete ${esc(v.name)}">Delete</button></span>`).join('') : '<p class="muted">No virtual machines yet.</p>';
     if (vms.length >= 2) { ctx.done(); }
@@ -1050,7 +1146,9 @@ VIZ.azsim = (box, cfg, ctx) => {
   <div class="vz-controls">${btn('heal', 'Repair everything')}${btn('reset', 'Reset')}</div><div class="vz-status" role="status" aria-live="polite"></div>`;
   const status = $('.vz-status', box);
   function up(ri, zi) { return placed.has(zid(ri, zi)) && !failedZ.has(zid(ri, zi)) && !failedR.has(ri); }
+  box._redraw = () => draw();
   function draw() {
+    if (box._a3) box._a3(placed, failedZ, failedR, up);
     cfg.regions.forEach((r, ri) => r.zones.forEach((z, zi) => { const id = zid(ri, zi), s = $(`[data-s="${id}"]`, box), pl = placed.has(id), fl = failedZ.has(id) || failedR.has(ri);
       s.innerHTML = fl ? '<span class="tag bad">Failed</span>' : '<span class="tag">Healthy</span>'; s.innerHTML += pl ? ' <span class="tag ok">App copy running</span>' : ' <span class="tag">No copy</span>';
       $(`[data-p="${id}"]`, box).textContent = pl ? 'Remove app copy' : 'Place app copy'; }));
@@ -1183,7 +1281,9 @@ VIZ.cloudnet = (box, cfg, ctx) => {
   <div class="vz-status" role="status" aria-live="polite">Create the virtual network first.</div>`;
   const status = $('.vz-status', box), g = k => $('#' + ctx.uid + k, box);
   const say = (t, c) => { status.className = 'vz-status ' + (c || ''); status.innerHTML = t; };
+  box._redraw = () => draw();
   function draw() {
+    if (box._n3) box._n3(vnet, subs, vms);
     $('.subs', box).innerHTML = subs.length ? `<table class="tbl"><thead><tr><th>Subnet</th><th>Range</th><th>Type</th><th>Route table</th><th>NAT</th></tr></thead><tbody>${subs.map((s, i) => `<tr><td>${esc(s.name)}</td><td>${s.cidr}<br><span class="muted">${IP.usable(s.c) - 3} assignable addresses</span></td><td>${s.type}</td><td>${s.type === 'public' ? '0.0.0.0/0 to internet gateway' : s.nat ? '0.0.0.0/0 to NAT gateway' : 'local network only'}</td><td>${s.type === 'private' ? `<button type="button" class="btn small" data-nat="${i}" aria-pressed="${s.nat}">${s.nat ? 'NAT on' : 'Add NAT'}</button>` : 'not needed'}</td></tr>`).join('')}</tbody></table>` : '<p class="muted">No subnets yet.</p>';
     const opts = subs.map((s, i) => `<option value="${i}">${esc(s.name)}</option>`).join(''); g('is').innerHTML = opts;
     $('.vms', box).innerHTML = vms.length ? `<table class="tbl"><thead><tr><th>Instance</th><th>Subnet</th><th>Private IP</th><th>Security rules (inbound)</th></tr></thead><tbody>${vms.map(v => `<tr><td>${esc(v.name)}</td><td>${esc(subs[v.s].name)}</td><td>${v.ip}</td><td>${subs[v.s].type === 'public' ? 'Allow 443 from internet. Deny everything else.' : 'Allow traffic from inside the virtual network only. Deny internet.'}</td></tr>`).join('')}</tbody></table>` : '<p class="muted">No instances yet.</p>';
@@ -1950,12 +2050,12 @@ M('4.4', 'Regions and Availability Zones', 'Where cloud resources live', {
   why: 'Placing resources well improves speed for users and keeps the application online when something fails.',
   ex: 'The online exam portal runs copies in two zones of one region. If one zone loses power, students keep taking exams from the other.',
   how: ['Choose a region near your users for lower latency.', 'Spread instances across zones for high availability.', 'For disaster recovery, keep backups or standby copies in another region.', 'Test what happens when something fails.'],
-  tryit: 'Place application copies in zones, then fail a zone or a whole region and watch the website.',
+  tryit: 'Place application copies in zones, then fail a zone or a whole region and watch the website. Below the simulator, use the 3D globe to see where real cloud regions are and how distance changes latency.',
   mist: ['High availability is not disaster recovery. HA handles small failures fast. DR handles big disasters, often with more downtime or data loss.', 'Two copies in the same zone still fail together if that zone fails.'],
   rem: 'Regions are areas, zones are separate sites inside a region. Use zones for high availability and other regions for disaster recovery.',
   quick: TF('Two copies of an app in the same availability zone protect against the loss of that zone.', false, 'Both fail together if the zone fails.'),
   viz: {
-    t: 'azsim', regionFail: true, latency: true, dr: 'High availability spreads copies across zones. Disaster recovery restores service after a bigger loss. They are different goals.', instr: 'Place app copies in zones, then use the fail buttons. Website stays online only if a healthy copy remains.',
+    t: 'azsim', globe: true, regionFail: true, latency: true, dr: 'High availability spreads copies across zones. Disaster recovery restores service after a bigger loss. They are different goals.', instr: 'Place app copies in zones, then use the fail buttons. Website stays online only if a healthy copy remains.',
     regions: [{ name: 'Region A (near your users)', note: 'Three zones', zones: ['Zone 1', 'Zone 2', 'Zone 3'] }, { name: 'Region B (far away)', note: 'Two zones', zones: ['Zone 1', 'Zone 2'] }]
   },
   chal: {
@@ -2619,6 +2719,154 @@ M('12.7', 'AZ-900 Readiness Review', 'Map what you learned to the exam skill are
 
 /* keep the curriculum in numeric order after adding modules */
 MODS.sort((a, b) => { const [al, am] = a.id.split('.').map(Number), [bl, bm] = b.id.split('.').map(Number); return al - bl || am - bm; });
+/* ============ More basics: files, code, passwords, web pages, bandwidth, processes ============ */
+M('0.4', 'Files, Folders and Paths', 'How data is organized on a computer', {
+  obj: ['Explain what a file, a folder and a path are', 'Read a full path and find the file it points to', 'Recognize common file extensions and what they mean'],
+  what: 'A <b>file</b> holds data under a name, such as a document, photo or song. A <b>folder</b> (also called a directory) groups files and other folders. Every file has a <b>path</b>, the route from the top of the file system to the file, for example <code>/home/student/Documents/report.docx</code>. The ending of a file name, such as <b>.docx</b> or <b>.jpg</b>, is the <b>file extension</b> and hints at the kind of data inside. The <b>file system</b> is how the operating system organizes and finds files on storage.',
+  ana: 'A filing cabinet: drawers are folders and papers are files. A path is like a postal address that names the country, city, street and house, one step at a time.',
+  why: 'Cloud storage such as Google Drive, OneDrive and Azure Files uses the same idea. Servers also read settings from files and write logs to files, so you will meet paths in almost every cloud task.',
+  ex: 'A student saves <code>report.docx</code> in Documents, inside a folder called Assignments. When it is uploaded to OneDrive, the same folder structure appears online, so a teacher can open the file at the same path.',
+  how: ['The operating system keeps a <b>tree</b> of folders that starts at one top folder.', 'Each folder can hold files and more folders.', 'A <b>path</b> lists the folders you pass through, separated by slashes, ending with the file name.', 'The <b>extension</b> tells programs how to open the file, for example .jpg opens in an image viewer.', 'Two files may share a name if they are in different folders, because their full paths differ.'],
+  tryit: 'Select folders and files to see their full path and type. Then create a new file of your own and choose where it goes.',
+  mist: ['A file name is not the same as its path. Two files can both be called notes.txt if they sit in different folders.', 'Renaming photo.jpg to photo.pdf does not convert it. The data inside is still an image.'],
+  rem: 'Files hold data, folders group them, and a path is the full address of a file. The extension hints at the type but does not change the data.',
+  quick: TF('Renaming photo.jpg to photo.pdf turns the photo into a real PDF document.', false, 'Only the name changed. Converting a file needs a program that rewrites the data.'),
+  viz: { t: 'fs', instr: 'Click any folder or file to inspect it. Inspect at least three items and create one new file.' },
+  chal: {
+    title: 'Files and Paths', intro: 'Check your understanding of files, folders and paths.', qs: [
+      MT('Match each term with its meaning.', [['File', 'A named unit of stored data'], ['Folder', 'A container that groups files'], ['Path', 'The route to a file from the top of the file system'], ['Extension', 'The ending of a file name that hints at its type']], 'These four words describe almost everything about how files are organized.'),
+      SC('Two files are both named notes.txt. One is in Documents and the other is in Projects. Can both exist on the same drive?', 'Yes, because their paths are different', ['No, file names must be unique on a whole drive', 'Only if one is stored in the cloud', 'Only if one is deleted first'], 'The full path, not just the name, identifies a file.', 'i')]
+  },
+  quiz: [
+    Q('Which of these is a full path?', '/home/student/Documents/report.docx', ['report.docx', 'Documents', '.docx'], 'A path lists the folders from the top down to the file name.'),
+    Q('What does the extension .mp3 usually indicate?', 'Audio', ['A web page', 'A spreadsheet', 'Program code'], 'Extensions hint at the kind of data. MP3 is a common audio format.'),
+    Q('What is a folder used for?', 'Grouping files and other folders', ['Running programs', 'Encrypting data', 'Connecting to the internet'], 'Folders organize files into a tree.')]
+});
+
+M('0.5', 'Programs and Code', 'From source code to a running program', {
+  obj: ['Explain what a program and source code are', 'Describe the job of a compiler and an interpreter', 'Follow a program from source code to output'],
+  what: 'A <b>program</b> is a list of instructions a computer follows. People write programs as <b>source code</b> in a programming language such as Python, Java or C. The CPU only understands <b>machine code</b>, so source code must be translated. A <b>compiler</b> translates the whole program ahead of time. An <b>interpreter</b> translates and runs it step by step. Java sits in between: it is compiled to <b>bytecode</b>, which the Java Virtual Machine then runs.',
+  ana: 'A recipe written in a language the chef cannot read. A compiler is like translating the whole book first. An interpreter is like a live translator reading out one step at a time.',
+  why: 'Everything in the cloud is software: web servers, databases and management tools are all programs. Knowing what a program is makes phrases like deploy an app easier to understand.',
+  ex: 'A student writes a Python script that prints an attendance summary. The interpreter runs it line by line. A Java attendance application is compiled first, then run on the Java Virtual Machine.',
+  how: ['A programmer writes <b>source code</b> in a text file.', 'A translator turns the code into instructions the CPU understands.', 'The operating system loads the result into memory.', 'The <b>CPU</b> executes the instructions.', 'The program produces <b>output</b> such as text, a page or a saved file.'],
+  tryit: 'Choose compiled or interpreted, then step through the journey from source code to output.',
+  mist: ['Source code is not yet a running application. It becomes one only after translation and execution.', 'Compiled does not automatically mean better. Each approach has trade offs in speed, portability and convenience.'],
+  rem: 'Source code is translated into machine code, either ahead of time by a compiler or step by step by an interpreter, and then the CPU runs it.',
+  quick: TF('A CPU can run Python source code directly with no translation.', false, 'The CPU only runs machine code. An interpreter translates Python as it runs.'),
+  viz: {
+    t: 'steps', w: 720, h: 250, nw: 112, optLabel: 'Language style', alt: 'Diagram of source code moving through a translator to the CPU and output',
+    instr: 'Pick a language style, then press Start or use Next step to follow the journey.',
+    nodes: [{ id: 'src', label: 'Source code', sub: 'what you write', x: 70, y: 130 }, { id: 'tr', label: 'Translator', sub: 'translates', x: 235, y: 130 }, { id: 'mc', label: 'Machine code', sub: 'CPU instructions', x: 400, y: 50 }, { id: 'cpu', label: 'CPU', sub: 'runs instructions', x: 540, y: 130 }, { id: 'out', label: 'Output', sub: 'what you see', x: 655, y: 200 }],
+    options: [
+      { label: 'Compiled (for example C)', steps: [{ from: 'src', to: 'tr', pkt: 'Code', text: 'The compiler reads the <b>whole</b> source code file.' }, { from: 'tr', to: 'mc', pkt: 'Machine code', text: 'It translates everything into a <b>machine code</b> file before the program runs.' }, { from: 'mc', to: 'cpu', pkt: 'Run', text: 'Later, the operating system loads that file and the <b>CPU</b> executes it directly.' }, { from: 'cpu', to: 'out', pkt: 'Result', text: 'The program shows its <b>output</b>.' }] },
+      { label: 'Interpreted (for example Python)', steps: [{ from: 'src', to: 'tr', pkt: 'Code', text: 'The interpreter starts reading the source code.' }, { from: 'tr', to: 'cpu', pkt: 'One step', text: 'It translates and runs the code <b>step by step</b>, handing each instruction to the CPU.' }, { from: 'cpu', to: 'tr', pkt: 'Done', text: 'The interpreter asks for the next instruction. This repeats until the program ends.' }, { from: 'cpu', to: 'out', pkt: 'Result', text: 'The program shows its <b>output</b>. Change one line and run again, with no separate compile step.' }] }
+    ]
+  },
+  chal: {
+    title: 'Code Terms', intro: 'Connect the words used when talking about programs.', qs: [
+      MT('Match each term with its meaning.', [['Source code', 'Human readable instructions written by a programmer'], ['Compiler', 'Translates a whole program to machine code before it runs'], ['Interpreter', 'Translates and runs a program step by step'], ['Machine code', 'Instructions the CPU can execute directly']], 'Knowing these four terms helps with every later topic about software.'),
+      SC('You changed one line of a small Python script and want to see the effect immediately. What makes this easy?', 'The interpreter runs the changed code right away', ['You must first ship the script to a data center', 'The CPU rewrites the source code for you', 'Python programs cannot be changed'], 'Interpreted languages skip a separate compile step, so testing small changes is quick.')]
+  },
+  quiz: [
+    Q('What does a compiler produce?', 'Machine code or similar low level instructions', ['A monitor', 'A network cable', 'A web page address'], 'A compiler translates source code into instructions that a machine can run.'),
+    Q('Which part actually executes machine code?', 'The CPU', ['The keyboard', 'The monitor', 'The file extension'], 'The CPU executes instructions.'),
+    Q('Java code is first compiled to what?', 'Bytecode', ['A spreadsheet', 'An image', 'A password'], 'Java compiles to bytecode, which the Java Virtual Machine runs.', 'i')]
+});
+
+M('0.6', 'Accounts, Passwords and Staying Safe', 'Basic habits that protect every account', {
+  obj: ['Explain what an account, a password and MFA are', 'Judge why some passwords are stronger than others', 'Recognize a phishing message'],
+  what: 'An <b>account</b> is your identity on a system, proven with credentials such as a username and a <b>password</b>. Attackers try to steal or guess credentials. <b>Phishing</b> is a trick message that pretends to be trusted so you reveal a password. Good habits are long unique passwords or passphrases, a <b>password manager</b> that remembers them, and <b>multi-factor authentication (MFA)</b>, which asks for a second proof such as a phone prompt. Length and unpredictability matter more than clever symbols.',
+  ana: 'A house key. If one key opens every door you own, losing it is a disaster. A unique key for each door limits the damage. Real attackers guess millions of passwords per second, which a burglar could not do.',
+  why: 'Cloud accounts control real resources and real bills. One stolen administrator password could let an attacker create expensive servers or read private data.',
+  ex: 'A student uses the same password for email, the college portal and a shopping site. When the shopping site leaks its passwords, attackers try that password on the college portal. MFA would have stopped the login.',
+  how: ['An attacker steals a password from a leak or guesses it.', 'Guessing tools try lists of common passwords first.', 'Each extra character of a random password makes guessing far slower.', 'A unique password for each account limits the damage of one leak.', '<b>MFA</b> requires a second proof, so a stolen password alone is not enough.'],
+  tryit: 'Type test passwords to see how length and variety change the strength estimate. Never type a password you really use. This lab runs only in your browser and stores nothing.',
+  mist: ['Adding one symbol to a predictable word does not make it strong. P@ssw0rd is still very weak.', 'Reusing a password across accounts is risky, and sharing it, even with friends, removes your control.'],
+  rem: 'Use long, unique passwords, keep them in a password manager, turn on MFA, and be suspicious of urgent messages asking for credentials.',
+  quick: TF('Replacing letters with symbols in a common word, like P@ssw0rd, makes a strong password.', false, 'Attackers already try these substitutions. Length and unpredictability matter more.'),
+  viz: { t: 'pwd', instr: 'Type different test passwords. Try a weak one and a long passphrase. Then read the tips.' },
+  chal: {
+    title: 'Safe Habits', intro: 'Choose the safe habits and spot the trick.', qs: [
+      ID('Select every good security habit.', [['Use a long, unique password for each account', true], ['Turn on multi-factor authentication', true], ['Use a password manager', true], ['Reuse one password everywhere so it is easy to remember', false], ['Click links in urgent messages asking you to confirm your password', false]], 'Unique passwords, MFA and a password manager work together.'),
+      SC('An email from IT support says your account closes in one hour unless you click a link and enter your password. What is the safest action?', 'Do not click. Open the official site yourself or contact IT', ['Click the link quickly before the deadline', 'Reply with your password', 'Forward the email to friends'], 'Urgency and a link asking for a password are classic phishing signs.')]
+  },
+  quiz: [
+    Q('What does MFA add to a password?', 'A second kind of proof', ['A longer username', 'A faster internet connection', 'A bigger hard disk'], 'MFA needs something more than the password, such as a code from a phone.'),
+    Q('Which password is generally hardest to guess?', 'A long random passphrase of several unrelated words', ['password123', 'The name of your pet', 'Your birth year'], 'Length and unpredictability make guessing take much longer.', 'i'),
+    Q('What is phishing?', 'A trick message that tries to make you reveal secrets', ['A type of fast network cable', 'A kind of backup', 'A way to encrypt files'], 'Phishing pretends to be trusted to steal information.')]
+});
+
+M('1.6', 'Web Pages: HTML, CSS and JavaScript', 'The three layers behind every web page', {
+  obj: ['Describe what HTML, CSS and JavaScript each do', 'Explain what the browser receives from a web server', 'See how the three layers combine into one page'],
+  what: 'A web page is built from three layers. <b>HTML</b> gives structure and content, such as headings, paragraphs and buttons. <b>CSS</b> controls appearance: colors, fonts and spacing. <b>JavaScript</b> adds behavior, such as reacting to a click. The <b>browser</b> downloads these files from a web server and turns them into the page you see.',
+  ana: 'A house. HTML is the walls and rooms, CSS is the paint and furniture, and JavaScript is the electricity that makes switches work.',
+  why: 'Every cloud portal, including the Azure portal, is a web application built from these layers. Knowing them shows what a web server really sends to your browser.',
+  ex: 'When a student opens the college attendance page, the server sends HTML for the table, CSS for the layout and JavaScript so the Submit button works without reloading the page.',
+  how: ['The browser sends a <b>request</b> for a page.', 'The server replies with <b>HTML</b>.', 'The browser reads the HTML and asks for any CSS and JavaScript files it mentions.', '<b>CSS</b> styles the elements.', '<b>JavaScript</b> runs and can change the page after clicks.'],
+  tryit: 'Edit the heading and text. Then switch CSS and JavaScript on and watch both the page and the code change.',
+  mist: ['HTML is not a programming language. It describes structure and does not make decisions or calculations.', 'The page you see is not the file on the server. The browser builds it from HTML, CSS and JavaScript.'],
+  rem: 'HTML is structure, CSS is looks, JavaScript is behavior, and the browser combines them into the page.',
+  quick: TF('CSS is the part of a web page that makes a button respond to a click.', false, 'That is JavaScript. CSS controls how things look.'),
+  viz: { t: 'webplay', instr: 'Change the text, then turn on CSS and JavaScript. Click the button in the preview after enabling JavaScript.' },
+  chal: {
+    title: 'Three Layers', intro: 'Match each layer to its job.', qs: [
+      MT('Match each item with its job.', [['HTML', 'Structure and content of a page'], ['CSS', 'Colors, fonts and layout'], ['JavaScript', 'Behavior such as reacting to clicks'], ['Browser', 'Downloads and displays web pages']], 'Each layer has a separate job, and together they make a page.'),
+      SC('You want a heading to turn blue and be centered. Which technology should you change?', 'CSS', ['HTML only', 'The web server hardware', 'An IP address'], 'CSS controls appearance such as color and alignment.')]
+  },
+  quiz: [
+    Q('Which technology defines the headings and paragraphs on a page?', 'HTML', ['CSS', 'DNS', 'SSD'], 'HTML describes the structure and content.'),
+    Q('What lets a page respond when you click a button without reloading?', 'JavaScript', ['HTML alone', 'A subnet mask', 'A MAC address'], 'JavaScript adds interactive behavior.'),
+    Q('What program turns HTML, CSS and JavaScript into a visible page?', 'The web browser', ['The router', 'The printer', 'The hypervisor'], 'The browser renders web pages.')]
+});
+
+M('2.5', 'Bandwidth and Latency', 'Two different ideas about network speed', {
+  obj: ['Tell bandwidth and latency apart', 'Estimate how long a download takes', 'Choose which one matters for a given task'],
+  what: '<b>Bandwidth</b> is how much data a connection can carry per second, measured in bits per second such as Mbps. <b>Latency</b> is the delay for data to make a trip, measured in milliseconds. A connection can have high bandwidth and high latency, or the other way round. <b>Throughput</b> is the speed you actually get in practice.',
+  ana: 'A highway. Bandwidth is the number of lanes, and latency is the length of the road. Adding lanes lets more cars travel at once, but it does not shorten the trip for one car.',
+  why: 'Cloud design depends on this difference. Large downloads and backups need bandwidth. Video calls, games and online exams need low latency, which is why regions are placed near users.',
+  ex: 'Streaming a movie needs plenty of bandwidth. An online exam or a video call needs low latency so answers and voices do not arrive late.',
+  how: ['Data leaves your device as packets.', 'Each packet needs time to travel, which is <b>latency</b>.', 'A wider connection sends more packets at the same time, which is <b>bandwidth</b>.', 'Total time is roughly the delay plus the file size divided by the bandwidth.', 'Small requests are dominated by latency, and huge files are dominated by bandwidth.'],
+  tryit: 'Move the sliders. In the 3D pipe, thickness shows bandwidth and length shows latency. Compare a small web page with a large file.',
+  mist: ['More bandwidth does not reduce latency. A faster plan will not fix delay caused by distance.', 'Mbps means megabits per second, not megabytes. Divide by 8 to get megabytes per second.'],
+  rem: 'Bandwidth is how much per second, latency is how long a trip takes. Big files need bandwidth and interactive apps need low latency.',
+  quick: TF('Doubling your bandwidth halves the latency of every request.', false, 'They are independent. Bandwidth changes how much fits per second, not how far data must travel.'),
+  viz: { t: 'pipe', instr: 'Drag each slider and watch the 3D pipe and the estimated times change.' },
+  chal: {
+    title: 'Speed Ideas', intro: 'Connect the speed words to their meaning.', qs: [
+      MT('Match each term with its meaning.', [['Bandwidth', 'How much data can be sent per second'], ['Latency', 'Delay for data to travel and come back'], ['Throughput', 'The speed you actually achieve'], ['Mbps', 'Megabits per second']], 'Keep bandwidth and latency separate in your mind.'),
+      SC('An online exam feels laggy even though very little data is sent. What is the best improvement?', 'Reduce latency, for example by using a closer region', ['Buy a much bigger monitor', 'Add more storage to every laptop', 'Send bigger files'], 'Small interactive traffic depends on delay, not on raw bandwidth.', 'i')]
+  },
+  quiz: [
+    Q('Which measure is written in milliseconds?', 'Latency', ['Bandwidth', 'Storage size', 'Screen resolution'], 'Latency is a delay, measured in time.'),
+    Q('Roughly how long does a 100 MB file take on a 100 Mbps link, ignoring delay?', 'About 8 seconds', ['About 1 second', 'About 100 seconds', 'About 1 hour'], '100 megabytes is 800 megabits, and 800 divided by 100 is 8 seconds.', 'i'),
+    Q('Which activity depends most on low latency?', 'A live video call', ['Downloading a large backup overnight', 'Storing old photos', 'Installing a big game update'], 'Live conversations break down when delay is high.')]
+});
+
+M('3.4', 'Operating Systems and Processes', 'How one CPU seems to run many programs', {
+  obj: ['Explain what a process is', 'Describe how an operating system shares the CPU', 'Explain why more CPU cores help'],
+  what: 'The <b>operating system</b> shares the CPU, memory and devices among programs. A running program is a <b>process</b>. One CPU <b>core</b> runs one process at a time, but the operating system switches between processes so fast that everything looks simultaneous. This is <b>multitasking</b>. More cores let several processes truly run at the same moment.',
+  ana: 'A teacher answering one student at a time so quickly that every student feels heard. More teachers means more students helped at once. Real scheduling uses tiny slices of time and priorities.',
+  why: 'Cloud servers run many processes, such as web servers, databases and monitoring tools. Choosing how many vCPUs a virtual machine needs depends on how much work its processes do.',
+  ex: 'On a laptop you browse, play music and download a file at the same time. The operating system gives each one a slice of CPU time many times every second.',
+  how: ['Each running program becomes a <b>process</b> with its own memory.', 'The operating system keeps a list of processes that are ready to run.', 'It gives each process a short time slice on a core.', 'It switches to the next process, again and again.', 'With several cores, several processes run at exactly the same time.'],
+  tryit: 'Open several apps and start the CPU. Compare how long everything takes with 1 core, 2 cores and 4 cores.',
+  mist: ['On one core, multitasking is fast switching and not true simultaneous work.', 'A program and a process differ. A program is a file, and a process is that program while it runs.'],
+  rem: 'The operating system shares the CPU by switching between processes. More cores mean more processes truly run together.',
+  quick: TF('One CPU core can truly run four programs at exactly the same instant.', false, 'A core runs one process at a time. Four at once needs about four cores, or fast switching.'),
+  viz: { t: 'sched', instr: 'Open a few apps, choose the number of cores, then press Start. Reset and try another number of cores.' },
+  chal: {
+    title: 'Process Words', intro: 'Match the words about programs and CPUs.', qs: [
+      MT('Match each term with its meaning.', [['Process', 'A running instance of a program'], ['Core', 'A unit that runs one process at a time'], ['Multitasking', 'Switching quickly between processes'], ['Operating system', 'Shares CPU, memory and devices among programs']], 'These ideas explain why apps feel simultaneous.'),
+      SC('A virtual machine with 1 vCPU becomes very slow when many processes are busy. What is a sensible fix?', 'Add vCPUs or spread the work over more VMs', ['Reduce the monitor brightness', 'Rename the files', 'Turn off the network cable'], 'More processing capacity lets more work happen at once.', 'i')]
+  },
+  quiz: [
+    Q('What is a process?', 'A running instance of a program', ['A cable in a rack', 'A type of storage', 'A domain name'], 'A program becomes a process when it runs.'),
+    Q('What does multitasking on one core rely on?', 'Rapid switching between processes', ['Adding more RAM only', 'A faster keyboard', 'A larger monitor'], 'The operating system switches so quickly that it seems simultaneous.'),
+    Q('Why do more cores help when many processes are busy?', 'More processes can run at the same time', ['Files become smaller', 'The internet gets faster', 'The screen gets sharper'], 'Each core can run one process at a time.', 'i')]
+});
+
+MODS.sort((a, b) => { const [al, am] = a.id.split('.').map(Number), [bl, bm] = b.id.split('.').map(Number); return al - bl || am - bm; });
 /* ============ Application ============ */
 const main = $('#main');
 let vizScope = null, uidn = 0, revealN = 1, curId = null;
@@ -2783,7 +3031,7 @@ function showOnboarding() {
   const dots = () => `<div class="ob-dots" aria-label="Step ${step + 1} of 4">${[0, 1, 2, 3].map(i => `<i class="${i <= step ? 'on' : ''}"></i>`).join('')}</div>`;
   function draw() {
     let h = '';
-    if (step === 0) h = `${dots()}<h1 tabindex="-1">Welcome to CloudQuest</h1><p><b>Your journey from computer basics to the cloud.</b></p><p>No experience is needed. We start with what a computer is and build step by step to networking, servers, cloud computing and the basics of Microsoft Azure.</p><ul class="steps-list"><li>${LV.length} levels and ${MODS.length} modules</li><li>Roughly 15 to 20 hours in total, at your own pace</li><li>Every module has a lesson, a lab, a mini-game and a quiz</li></ul><div class="callout">Every expert started as a beginner. Questions and mistakes are part of learning.</div><div class="ob-actions"><button type="button" class="btn" data-o="skip">Skip introduction</button><button type="button" class="btn primary" data-o="next">Start Learning</button></div>`;
+    if (step === 0) h = `${dots()}<div class="cube-wrap" aria-hidden="true"><div class="cube"><span class="f1">CPU</span><span class="f2">NET</span><span class="f3">DATA</span><span class="f4">CLOUD</span><span class="f5">SAFE</span><span class="f6">AZURE</span></div></div><h1 tabindex="-1">Welcome to CloudQuest</h1><p><b>Your journey from computer basics to the cloud.</b></p><p>No experience is needed. We start with what a computer is and build step by step to networking, servers, cloud computing and the basics of Microsoft Azure.</p><ul class="steps-list"><li>${LV.length} levels and ${MODS.length} modules</li><li>Roughly 15 to 20 hours in total, at your own pace</li><li>Every module has a lesson, a lab, a mini-game and a quiz</li></ul><div class="callout">Every expert started as a beginner. Questions and mistakes are part of learning.</div><div class="ob-actions"><button type="button" class="btn" data-o="skip">Skip introduction</button><button type="button" class="btn primary" data-o="next">Start Learning</button></div>`;
     else if (step === 1) h = `${dots()}<h1 tabindex="-1">Tell us a little about you</h1><p>These answers do not block anything. They just help you see where you are starting.</p>${YN.map((q, i) => `<div class="ob-q"><b>${q}</b><div class="yn" role="group" aria-label="${esc(q)}">${['Yes', 'A little', 'No'].map(a => `<button type="button" class="btn small" data-q="${i}" data-a="${a}" aria-pressed="${S.intro['q' + i] === a}">${a}</button>`).join('')}</div></div>`).join('')}<div class="ob-actions"><button type="button" class="btn" data-o="back">Back</button><button type="button" class="btn primary" data-o="next">Next</button></div>`;
     else if (step === 2) h = `${dots()}<h1 tabindex="-1">What do you want to achieve?</h1><p>Choose any goals that fit. You can change them later.</p>${GOALS.map((g, i) => `<label class="ob-goal"><input type="checkbox" data-g="${i}" ${S.goals.includes(g) ? 'checked' : ''}><span>${g}</span></label>`).join('')}<div class="ob-actions"><button type="button" class="btn" data-o="back">Back</button><button type="button" class="btn primary" data-o="next">Next</button></div>`;
     else h = `${dots()}<h1 tabindex="-1">How CloudQuest works</h1><ul class="steps-list"><li><b>Learn at your own pace.</b> Nothing is locked, so jump anywhere.</li><li><b>Try the interactive labs.</b> Clicking and experimenting is how ideas stick.</li><li><b>Read the explanations.</b> Every answer explains why.</li><li><b>Complete the challenges.</b> Earn XP and badges as you go.</li><li><b>Review incorrect answers.</b> Mistakes are the fastest way to learn.</li></ul><div class="ob-actions"><button type="button" class="btn" data-o="back">Back</button><button type="button" class="btn primary" data-o="finish">Begin my journey</button></div>`;
@@ -2806,12 +3054,12 @@ function applyTheme(t) {
   if (t) { S.theme = t; save(); }
   const th = THEMES.includes(S.theme) ? S.theme : 'future';
   document.documentElement.dataset.theme = th;
-  const b = $('#themeBtn'); b.textContent = 'Theme: ' + THEME_NAMES[th]; b.setAttribute('aria-label', 'Switch color theme. Current theme: ' + THEME_NAMES[th]);
+  const b = $('#themeBtn'); b.textContent = THEME_NAMES[th]; b.setAttribute('aria-label', 'Switch color theme. Current theme: ' + THEME_NAMES[th]);
 }
 function cycleTheme() { const cur = document.documentElement.dataset.theme; applyTheme(THEMES[(THEMES.indexOf(cur) + 1) % THEMES.length]); }
 function setInst(on) {
   S.inst = on; save(); document.body.classList.toggle('present', on); $('#instBtn').setAttribute('aria-pressed', on);
-  $('#instBtn').textContent = on ? 'Exit instructor mode' : 'Instructor mode';
+  $('#instBtn').textContent = on ? 'Exit instructor' : 'Instructor';
   if (!on) document.body.classList.remove('hl');
   toast(on ? 'Instructor mode on. Use the toolbar at the bottom.' : 'Instructor mode off.'); route();
 }
@@ -2836,7 +3084,7 @@ function stepModule(d) { const i = curId ? MODS.findIndex(m => m.id === curId) :
 
 /* ---------- init ---------- */
 function init() {
-  applyTheme(); document.body.classList.toggle('present', !!S.inst); $('#instBtn').setAttribute('aria-pressed', !!S.inst); if (S.inst) $('#instBtn').textContent = 'Exit instructor mode';
+  applyTheme(); document.body.classList.toggle('present', !!S.inst); $('#instBtn').setAttribute('aria-pressed', !!S.inst); if (S.inst) $('#instBtn').textContent = 'Exit instructor';
   $('#themeBtn').addEventListener('click', () => cycleTheme());
   $('#instBtn').addEventListener('click', () => setInst(!S.inst));
   $('#menuBtn').addEventListener('click', () => { const o = document.body.classList.toggle('nav-open'); $('#menuBtn').setAttribute('aria-expanded', o); });
@@ -2931,6 +3179,7 @@ function Scene3D(canvas, o) {
   });
   const onResize = () => { if (!canvas.isConnected) { window.removeEventListener('resize', onResize); return; } size(); };
   window.addEventListener('resize', onResize);
+  api.resize = size;
   size(); requestAnimationFrame(frame);
   return api;
 }
@@ -3066,30 +3315,6 @@ VIZ.resp = (box, cfg, ctx) => {
   box._redraw();
 };
 
-/* ============ Home page 3D hero and tools ============ */
-const _rh = renderHome;
-renderHome = function () { _rh(); decorateHome(); };
-function decorateHome() {
-  const hero = $('.hero', main); if (!hero) return;
-  const li = levelInfo(S.xp), p = pctAll(), C = 2 * Math.PI * 34;
-  const card = el(`<section class="card hero3d" aria-label="Interactive 3D globe of cloud regions"><canvas tabindex="0" role="img" aria-label="Rotating 3D globe with cloud regions. Drag to rotate."></canvas>
-   <div class="hero3d-txt"><h2>The cloud is a real network of places</h2><p>Drag the globe. Each glowing point is a cloud region, a group of data centers.</p><div class="vz-controls"><button type="button" class="btn small" data-h="spin" aria-pressed="true">Pause spin</button><a class="btn small primary" href="#/module/4.5">Explore regions</a></div></div>
-   <div class="hud"><svg viewBox="0 0 80 80" width="84" height="84" role="img" aria-label="${p} percent of the course complete"><circle cx="40" cy="40" r="34" fill="none" stroke="var(--line)" stroke-width="7"/><circle cx="40" cy="40" r="34" fill="none" stroke="var(--primary)" stroke-width="7" stroke-linecap="round" stroke-dasharray="${(C * p / 100).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 40 40)"/><text x="40" y="45" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">${p}%</text></svg><div><b>${esc(li.name)}</b><br><span class="muted">${S.xp} XP</span></div></div></section>`);
-  hero.before(card);
-  const pairs = [[0, 7], [4, 5], [11, 8], [9, 3], [10, 11], [6, 4]];
-  const sc = Scene3D($('canvas', card), {
-    fill: true, yaw: 1.1, pitch: 0.28, scale: 0.36, ox: 150, spinSpeed: 0.22,
-    build: t => {
-      const o = GLOBE_BASE.slice();
-      pairs.forEach(([a, b], i) => { for (let k = 0; k < 20; k++) o.push({ t: 'l', a: arcPoint(REG_XYZ[a], REG_XYZ[b], k / 20, 0.25), b: arcPoint(REG_XYZ[a], REG_XYZ[b], (k + 1) / 20, 0.25), c: '--accent', al: 0.4, w: 1.3 }); o.push({ t: 'd', p: arcPoint(REG_XYZ[a], REG_XYZ[b], (t * 0.22 + i / pairs.length) % 1, 0.25), r: 3.2, c: '--warn', glow: true }); });
-      REG_XYZ.forEach(p => o.push({ t: 'd', p, r: 4, c: '--primary', glow: true }));
-      return o;
-    }
-  });
-  $('[data-h=spin]', card).addEventListener('click', e => { const on = !sc.st.spin; sc.setSpin(on); e.currentTarget.textContent = on ? 'Pause spin' : 'Start spin'; e.currentTarget.setAttribute('aria-pressed', on); });
-  hero.after(el(`<section class="card"><h2>Learning tools</h2><div class="cols"><a class="box tool" href="#/lab"><h3>Terminal lab</h3><p>Type simulated ping, DNS, subnet and Azure commands and see what they do.</p></a><a class="box tool" href="#/glossary"><h3>Glossary</h3><p>Search plain language definitions of every term in the course.</p></a><a class="box tool" href="#/cards"><h3>Flashcards</h3><p>Flip 3D cards to test yourself on key terms.</p></a></div><p class="muted">Tip: press Ctrl K (or Cmd K) anywhere to search modules, terms and tools.</p></section>`));
-}
-
 /* ============ Celebration effect ============ */
 function celebrate() {
   if (reduceMotion()) return;
@@ -3124,6 +3349,10 @@ const GLOSS = [
   ['Authentication', 'Proving who you are.', '9.1'], ['Authorization', 'Deciding what an identified user is allowed to do.', '9.1'], ['Least privilege', 'Giving only the permissions needed to do a job.', '9.1'], ['Encryption', 'Scrambling data with a key so only authorized parties can read it.', '9.2'], ['MFA', 'Multi-factor authentication. Signing in with more than one kind of proof.', '9.3'],
   ['Pay-as-you-go', 'Paying for resources based on what you consume.', '10.1'], ['Scalability', 'The ability to handle more or less work by changing resources.', '10.2'], ['Elasticity', 'Scaling automatically and quickly as demand changes.', '10.2'],
   ['High availability', 'Designing a service to stay online despite failures.', '11.1'], ['Single point of failure', 'One component whose failure stops the whole service.', '11.1'], ['RPO', 'Recovery point objective. How much recent data you can afford to lose.', '11.2'], ['RTO', 'Recovery time objective. How long you can afford to be down.', '11.2'], ['Disaster recovery', 'Plans and tools to restore service after a major failure.', '11.2'],
+  ['File', 'A named unit of stored data such as a document, photo or song.', '0.4'], ['Folder', 'A container that groups files and other folders.', '0.4'], ['Path', 'The route from the top of a file system to a file, such as /home/student/Documents/report.docx.', '0.4'], ['File extension', 'The ending of a file name, such as .docx or .jpg, that hints at the type of data.', '0.4'], ['File system', 'The way an operating system organizes and finds files on storage.', '0.4'],
+  ['Source code', 'Human readable instructions written by a programmer.', '0.5'], ['Compiler', 'A tool that translates a whole program into machine code before it runs.', '0.5'], ['Interpreter', 'A tool that translates and runs a program step by step.', '0.5'], ['Machine code', 'The instructions a CPU can execute directly.', '0.5'], ['Phishing', 'A trick message that pretends to be trusted so you reveal a password or other secret.', '0.6'], ['Password manager', 'A tool that creates and stores long unique passwords for you.', '0.6'],
+  ['HTML', 'The language that gives a web page its structure and content.', '1.6'], ['CSS', 'The language that controls how a web page looks.', '1.6'], ['JavaScript', 'The programming language that adds behavior to web pages.', '1.6'], ['Bandwidth', 'How much data a connection can carry per second, such as 100 Mbps.', '2.5'], ['Throughput', 'The data rate you actually achieve on a connection.', '2.5'],
+  ['Process', 'A running instance of a program.', '3.4'], ['Multitasking', 'Switching quickly between processes so many seem to run at once.', '3.4'], ['Core', 'A processing unit inside a CPU that runs one process at a time.', '3.4'],
   ['Microsoft Azure', 'Microsoft cloud platform with many services.', '12.1'], ['Subscription', 'An Azure agreement and billing boundary that holds resources.', '12.1'], ['Resource group', 'A logical container for related Azure resources.', '12.1'], ['Network security group', 'Azure rules that allow or deny network traffic to resources in a virtual network.', '12.4'], ['Azure Blob Storage', 'Azure object storage for unstructured data.', '12.3'], ['Microsoft Entra ID', 'Azure identity service for sign in and access.', '12.5'], ['Azure RBAC', 'Role based access control that grants permissions through role assignments.', '12.5'], ['Azure Key Vault', 'A service for storing secrets, keys and certificates.', '12.5'], ['Azure Policy', 'A service that enforces rules and checks compliance for resources.', '12.5'], ['Microsoft Defender for Cloud', 'A service that helps assess and improve cloud security posture and detect threats.', '12.5'], ['Tag', 'A name and value pair attached to a resource to organize and track cost.', '12.6']
 ].sort((a, b) => a[0].localeCompare(b[0]));
 
@@ -3272,6 +3501,383 @@ BADGES.push({ id: 'lab', name: 'Terminal Explorer', desc: 'Run 5 different comma
 })();
 function markTools() { $$('#tools a').forEach(a => { if (location.hash.indexOf(a.getAttribute('href')) === 0) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }); }
 window.addEventListener('hashchange', markTools); markTools();
+/* ============ Clean UI update ============ */
+
+/* ---- reusable collapsible 3D view for visualizers ---- */
+function add3D(box, title, hint, o) {
+  const d = el(`<details class="view3d" open><summary>${esc(title)}</summary><p class="muted">${esc(hint)}</p><canvas tabindex="0" role="img" aria-label="${esc(title)}. The text and controls in this lab describe the same information."></canvas><div class="vz-controls"><button type="button" class="btn small" data-d="l">Rotate left</button><button type="button" class="btn small" data-d="r">Rotate right</button><button type="button" class="btn small" data-d="v">Reset view</button></div></details>`);
+  box.append(d);
+  let objs = [];
+  const sc = Scene3D($('canvas', d), Object.assign({ ratio: 0.5, yaw: -0.5, pitch: 0.45, spin: false, scale: 0.19, dist: 9, build: () => objs }, o || {}));
+  if (!sc.supported) d.innerHTML = '<summary>3D view</summary><p class="muted">3D view is not available in this browser. The lab above shows the same information.</p>';
+  d.addEventListener('click', e => { const b = e.target.closest('[data-d]'); if (!b) return; if (b.dataset.d === 'l') sc.rotate(-0.3, 0); if (b.dataset.d === 'r') sc.rotate(0.3, 0); if (b.dataset.d === 'v') sc.resetView(); });
+  d.addEventListener('toggle', () => { if (d.open && sc.resize) sc.resize(); });
+  return { set(x) { objs = x; }, scene: sc };
+}
+const grid3 = (n, step, c = '--line2', al = 0.22) => { const o = []; for (let i = -n; i <= n; i++) { o.push({ t: 'l', a: [i * step, 0, -n * step], b: [i * step, 0, n * step], c, al }); o.push({ t: 'l', a: [-n * step, 0, i * step], b: [n * step, 0, i * step], c, al }); } return o; };
+const bx = (x, y, z, w, h, d, c, al, e) => ({ t: 'b', p: [x, y, z], s: [w, h, d], c, al, edge: e });
+const dn = (x, y, z, r, c) => ({ t: 'd', p: [x, y, z], r, c, glow: true });
+const ln = (a, b, c, al, w) => ({ t: 'l', a, b, c, al: al == null ? 0.7 : al, w: w || 1.6 });
+const tx = (x, y, z, text, c) => ({ t: 't', p: [x, y, z], text, c: c || '--ink' });
+
+/* ---- 3D views added to existing labs ---- */
+const _cn = VIZ.connector;
+VIZ.connector = (box, cfg, ctx) => {
+  _cn(box, cfg, ctx);
+  const v = add3D(box, '3D view of your network', 'Drag to rotate. Green lines are correct links and red lines do not belong in this design.', { scale: 0.17 });
+  const pos = n => [(n.x - 360) / 105, 0.3, (n.y - 120) / 62];
+  box._c3 = (nodes, have, need, sel) => {
+    const o = grid3(6, 0.7);
+    nodes.forEach(n => { const p = pos(n); o.push(bx(p[0], p[1], p[2], 0.9, 0.55, 0.7, sel === n.id ? '--warn' : '--primary', 0.45), tx(p[0], p[1] + 0.7, p[2], n.label)); });
+    [...have].forEach(k => { const [a, b] = k.split('|').map(id => nodes.find(n => n.id === id)); if (a && b) o.push(ln(pos(a), pos(b), need.has(k) ? '--ok' : '--bad', 0.95, 2.6)); });
+    v.set(o);
+  };
+  box._redraw();
+};
+
+const _vh = VIZ.vmhost;
+VIZ.vmhost = (box, cfg, ctx) => {
+  _vh(box, cfg, ctx);
+  const v = add3D(box, '3D view of the physical host', 'The grey base is the physical server, the blue layer is the hypervisor, and each block is a virtual machine sized by its RAM and vCPUs.', { scale: 0.2, dist: 9 });
+  box._v3 = (vms, CAP) => {
+    const o = grid3(5, 0.8);
+    o.push(bx(0, 0.25, 0, 4.4, 0.5, 2.4, '--line2', 0.25, '--line2'), bx(0, 0.62, 0, 4.2, 0.2, 2.2, '--accent', 0.4), tx(0, -0.1, 1.5, 'Physical server'), tx(0, 0.62, 1.4, 'Hypervisor', '--muted'));
+    const ws = vms.map(v => 0.35 + v.ram / 32 * 0.75), total = ws.reduce((s, w) => s + w + 0.08, 0); let x = -total / 2;
+    vms.forEach((m, i) => { const w = ws[i]; x += w / 2; o.push(bx(x, 0.72 + (0.25 + m.cpu * 0.09) / 2, 0, w, 0.25 + m.cpu * 0.09, 0.95, '--primary', 0.5), tx(x, 0.72 + 0.3 + m.cpu * 0.09 + 0.25, 0, m.name)); x += w / 2 + 0.08; });
+    if (!vms.length) o.push(tx(0, 1.2, 0, 'No virtual machines yet', '--muted'));
+    v.set(o);
+  };
+  box._redraw();
+};
+
+const _cnet = VIZ.cloudnet;
+VIZ.cloudnet = (box, cfg, ctx) => {
+  _cnet(box, cfg, ctx);
+  const v = add3D(box, '3D view of your cloud network', 'The large box is the virtual network. Green slabs are public subnets, purple slabs are private subnets, and small blocks are instances.', { scale: 0.18, dist: 9, yaw: -0.6 });
+  box._n3 = (vnet, subs, vms) => {
+    const o = grid3(6, 0.7);
+    if (!vnet) { o.push(tx(0, 1, 0, 'Create a virtual network first', '--muted')); return v.set(o); }
+    o.push(bx(0, 1.15, 0, 5.4, 2.3, 3.2, '--primary', 0.07, '--primary'), tx(0, 2.55, 0, 'Virtual network ' + ((vnet && vnet.cidr) || '')));
+    o.push(dn(-3.4, 2.4, 0, 9, '--warn'), tx(-3.4, 2.85, 0, 'Internet'));
+    const n = subs.length, w = n ? 4.8 / n : 4.8;
+    subs.forEach((s, i) => {
+      const x = -2.4 + w * (i + 0.5), pub = s.type === 'public';
+      o.push(bx(x, 0.35, 0, w - 0.15, 0.25, 2.6, pub ? '--ok' : '--accent', 0.4, s.nat ? '--warn' : undefined), tx(x, 0.08, 1.7, s.name));
+      if (pub) o.push(ln([-3.4, 2.4, 0], [x, 0.6, 0], '--ok', 0.85, 2.2)); else if (s.nat) o.push(ln([-3.4, 2.4, 0], [x, 0.6, 0], '--warn', 0.7, 1.6));
+      vms.filter(m => m.s === i).forEach((m, k) => o.push(bx(x - w / 2 + 0.45 + k * 0.5, 0.7, 0, 0.35, 0.35, 0.35, '--primary', 0.7), tx(x - w / 2 + 0.45 + k * 0.5, 1.05, 0, m.name, '--ink')));
+    });
+    v.set(o);
+  };
+  box._redraw();
+};
+
+const _az = VIZ.azsim;
+VIZ.azsim = (box, cfg, ctx) => {
+  _az(box, cfg, ctx);
+  const v = add3D(box, '3D view of locations', 'Each platform is a region. Blocks on it are zones. A cube is an app copy. Red means failed.', { scale: 0.16, dist: 9, pitch: 0.5 });
+  box._a3 = (placed, fz, fr, up) => {
+    const o = grid3(7, 0.7), R = cfg.regions.length; let x0 = 0;
+    const widths = cfg.regions.map(r => r.zones.length * 1.3 + 0.5), tot = widths.reduce((s, w) => s + w + 0.6, 0);
+    let cx = -tot / 2;
+    cfg.regions.forEach((r, ri) => {
+      const w = widths[ri]; cx += w / 2; const rdown = fr.has(ri);
+      o.push(bx(cx, 0.06, 0, w, 0.12, 2.4, rdown ? '--bad' : '--line2', 0.25, rdown ? '--bad' : '--line2'), tx(cx, 0.06, 1.5, r.name));
+      r.zones.forEach((z, zi) => {
+        const id = ri + '.' + zi, zx = cx - w / 2 + 0.25 + 0.65 + zi * 1.3, dead = fz.has(id) || rdown;
+        o.push(bx(zx, 0.4, 0, 1.1, 0.5, 1.8, dead ? '--bad' : '--primary', dead ? 0.35 : 0.22), tx(zx, 0.85, -1.2, z, '--muted'));
+        if (placed.has(id)) o.push(bx(zx, 0.9, 0, 0.5, 0.5, 0.5, up(ri, zi) ? '--ok' : '--bad', 0.7));
+      });
+      cx += w / 2 + 0.6;
+    });
+    v.set(o);
+  };
+  box._redraw();
+};
+
+/* ---- regions module also gets the 3D globe (added on top of everything else in the lab) ---- */
+const _az2 = VIZ.azsim;
+VIZ.azsim = (box, cfg, ctx) => {
+  _az2(box, cfg, ctx);
+  if (!cfg.globe) return;
+  const wrap = el('<details class="view3d" open><summary>3D globe of cloud regions</summary><p class="muted">Real cloud regions are groups of data centers in different parts of the world. Choose where your users are and compare the estimated delay to each region. Locations and delays are simplified and illustrative.</p><div class="globe-holder"></div></details>');
+  box.append(wrap);
+  const holder = $('.globe-holder', wrap);
+  const gctx = Object.assign({}, ctx, { uid: ctx.uid + 'g', done() { }, remount: mountGlobe });
+  function mountGlobe() { const c = document.createElement('div'); c.className = 'vz'; holder.replaceChildren(c); VIZ.globe(c, { instr: 'Pick a user location, then select regions on the globe or in the list. Drag the globe to rotate it.' }, gctx); }
+  mountGlobe();
+};
+
+/* ---- new labs ---- */
+VIZ.fs = (box, cfg, ctx) => {
+  let files = [['Documents/Assignments/report.docx', 240], ['Documents/Assignments/notes.txt', 4], ['Documents/Photos/trip.jpg', 3200], ['Music/song.mp3', 5100], ['Projects/site/index.html', 6]].map(a => ({ p: a[0], kb: a[1] }));
+  const folders = ['Documents', 'Documents/Assignments', 'Documents/Photos', 'Music', 'Projects', 'Projects/site'];
+  const TYPES = { txt: 'Plain text', docx: 'Word document', jpg: 'Image (JPEG)', png: 'Image (PNG)', mp3: 'Audio', html: 'Web page', pdf: 'PDF document', py: 'Python source code', java: 'Java source code', xlsx: 'Excel spreadsheet', csv: 'Table of comma separated values' };
+  let sel = null; const seen = new Set(); let made = false;
+  box.innerHTML = instr(cfg.instr) + `<div class="xp-wrap"><div class="box"><h3>File explorer</h3><div class="tree-list" role="group" aria-label="Files and folders"></div></div><div class="xp-detail" aria-live="polite"><p class="muted">Select a folder or file.</p></div></div>
+  <div class="box" style="margin-top:.8rem"><h3>Create a file</h3><div class="vz-row"><label for="${ctx.uid}n">File name</label><input type="text" id="${ctx.uid}n" value="summary.pdf" maxlength="30" autocomplete="off"><label for="${ctx.uid}f">Folder</label><select id="${ctx.uid}f">${folders.map(f => `<option>${f}</option>`).join('')}</select>${btn('mk', 'Create file', 'primary')}${btn('reset', 'Reset')}</div></div><div class="vz-status" role="status" aria-live="polite"></div>`;
+  const list = $('.tree-list', box), detail = $('.xp-detail', box), status = $('.vz-status', box), g = k => $('#' + ctx.uid + k, box);
+  const all = () => [...folders.map(f => ({ p: f, dir: true })), ...files].sort((a, b) => a.p.localeCompare(b.p));
+  function draw() {
+    list.innerHTML = all().map(it => { const d = it.p.split('/').length - 1, nm = it.p.split('/').pop(); return `<button type="button" class="tree-item ${sel === it.p ? 'sel' : ''}" data-p="${esc(it.p)}" style="padding-left:${0.6 + d * 1.1}rem" aria-pressed="${sel === it.p}">${it.dir ? 'Folder: ' : 'File: '}${esc(nm)}</button>`; }).join('');
+    const it = all().find(x => x.p === sel);
+    if (it) { const ext = it.p.split('.').pop().toLowerCase(); detail.innerHTML = `<h3>${esc(it.p.split('/').pop())}</h3><dl class="kv"><dt>Full path</dt><dd><code>/home/student/${esc(it.p)}</code></dd><dt>Kind</dt><dd>${it.dir ? 'Folder' : 'File'}</dd>${it.dir ? '' : `<dt>Extension</dt><dd>.${esc(ext)}</dd><dt>Type</dt><dd>${esc(TYPES[ext] || 'Unknown type')}</dd><dt>Size</dt><dd>${it.kb.toLocaleString()} KB</dd>`}</dl>${it.dir ? '' : `<p>${btn('del', 'Delete this file')}</p>`}`; }
+    else detail.innerHTML = '<p class="muted">Select a folder or file.</p>';
+    const ok = seen.size >= 3 && made; status.className = 'vz-status ' + (ok ? 'ok' : ''); status.textContent = ok ? 'Well done. You explored paths and created a file.' : `Items inspected: ${seen.size} of 3. New file created: ${made ? 'yes' : 'not yet'}.`;
+    if (ok) ctx.done();
+  }
+  box.addEventListener('click', e => {
+    const t = e.target.closest('.tree-item'); if (t) { sel = t.dataset.p; seen.add(sel); return draw(); }
+    const a = e.target.closest('[data-a]'); if (!a) return;
+    if (a.dataset.a === 'reset') return ctx.remount();
+    if (a.dataset.a === 'del') { files = files.filter(f => f.p !== sel); sel = null; return draw(); }
+    if (a.dataset.a === 'mk') {
+      const name = g('n').value.trim(), dir = g('f').value;
+      if (!/^[^\\/:*?"<>|]{1,30}$/.test(name)) { status.className = 'vz-status bad'; status.textContent = 'File names cannot be empty or contain slashes or these characters: \\ : * ? " < > |'; return; }
+      if (files.some(f => f.p === dir + '/' + name)) { status.className = 'vz-status bad'; status.textContent = 'A file with that name already exists in that folder. Two files in one folder cannot share a name.'; return; }
+      files.push({ p: dir + '/' + name, kb: 12 }); sel = dir + '/' + name; seen.add(sel); made = true; draw();
+    }
+  });
+  draw();
+};
+
+VIZ.pwd = (box, cfg, ctx) => {
+  const seen = new Set(), COMMON = ['password', '123456', '12345678', 'qwerty', 'letmein', 'admin', 'welcome', 'iloveyou', 'abc123', '111111', 'monkey', 'dragon'];
+  box.innerHTML = instr(cfg.instr) + `<div class="callout warn"><b>Safety:</b> never type a password you really use. This lab runs only in your browser and sends and stores nothing.</div>
+  <div class="vz-row"><label for="${ctx.uid}p">Test password</label><input type="password" id="${ctx.uid}p" autocomplete="off" spellcheck="false" maxlength="64"><label class="idrow" style="border:0"><input type="checkbox" id="${ctx.uid}s"><span>Show it</span></label>${btn('reset', 'Reset')}</div>
+  <div class="gauge" aria-hidden="true"><i style="width:0%"></i></div><div class="vz-status" role="status" aria-live="polite">Start typing to see the estimate.</div><ul class="steps-list tips"></ul>
+  <p class="muted">Try these ideas: password123, Tr0ub4dor, and a passphrase such as four unrelated words with spaces.</p>`;
+  const inp = $('input[type=password]', box), gauge = $('.gauge', box), status = $('.vz-status', box), tips = $('.tips', box);
+  const fmt = s => s < 1 ? 'less than a second' : s < 60 ? Math.round(s) + ' seconds' : s < 3600 ? Math.round(s / 60) + ' minutes' : s < 86400 ? Math.round(s / 3600) + ' hours' : s < 31536000 ? Math.round(s / 86400) + ' days' : s < 3.15e10 ? Math.round(s / 31536000).toLocaleString() + ' years' : 'many millions of years';
+  function score(p) {
+    let pool = 0; if (/[a-z]/.test(p)) pool += 26; if (/[A-Z]/.test(p)) pool += 26; if (/\d/.test(p)) pool += 10; if (/[^A-Za-z0-9]/.test(p)) pool += 32;
+    let bits = p.length * Math.log2(pool || 1); const notes = [], low = p.toLowerCase();
+    if (COMMON.some(c => low.includes(c))) { bits = Math.min(bits, 14); notes.push('It contains a very common password or word, so guessing tools try it first.'); }
+    if (/(.)\1{2,}/.test(p)) { bits -= 8; notes.push('Repeated characters are easy to guess.'); }
+    if (/(012|123|234|345|456|567|678|789|abc|bcd|cde|qwe)/i.test(p)) { bits -= 8; notes.push('Simple sequences are easy to guess.'); }
+    if (p.length < 12) notes.push('Aim for at least 12 characters. Length helps the most.');
+    if (!notes.length) notes.push('Good. Now keep it unique for this account and store it in a password manager.');
+    bits = Math.max(0, bits); return { bits, level: bits < 30 ? 'Weak' : bits < 50 ? 'Fair' : bits < 70 ? 'Strong' : 'Very strong', notes, secs: Math.pow(2, bits) / 1e10 };
+  }
+  function draw() {
+    const p = inp.value;
+    if (!p) { gauge.className = 'gauge'; $('i', gauge).style.width = '0%'; status.className = 'vz-status'; status.textContent = 'Start typing to see the estimate.'; tips.innerHTML = ''; return; }
+    const r = score(p); seen.add(r.level);
+    gauge.className = 'gauge ' + (r.level === 'Weak' ? 'bad' : r.level === 'Fair' ? 'warn' : ''); $('i', gauge).style.width = Math.min(100, r.bits / 80 * 100) + '%';
+    status.className = 'vz-status ' + (r.level === 'Weak' ? 'bad' : r.level === 'Fair' ? 'warn' : 'ok');
+    status.innerHTML = `<b>${r.level}.</b> Rough guessing effort: about ${Math.round(r.bits)} bits. A fast offline attack of 10 billion guesses per second (illustrative) would need ${fmt(r.secs)} on average.`;
+    tips.innerHTML = r.notes.map(n => `<li>${n}</li>`).join('');
+    if (seen.has('Weak') && (seen.has('Strong') || seen.has('Very strong'))) ctx.done();
+  }
+  inp.addEventListener('input', draw);
+  $('input[type=checkbox]', box).addEventListener('change', e => { inp.type = e.target.checked ? 'text' : 'password'; });
+  box.addEventListener('click', e => { if (e.target.closest('[data-a=reset]')) ctx.remount(); });
+  draw();
+};
+
+VIZ.webplay = (box, cfg, ctx) => {
+  let css = false, js = false, edited = false, clicks = 0;
+  box.innerHTML = instr(cfg.instr) + `<div class="cols"><div class="box"><h3>Edit the page</h3>
+   <div class="vz-row"><label for="${ctx.uid}h">Heading</label><input type="text" id="${ctx.uid}h" value="Welcome to my page" maxlength="40"></div>
+   <div class="vz-row"><label for="${ctx.uid}t">Paragraph</label><input type="text" id="${ctx.uid}t" value="This page has three layers." maxlength="80"></div>
+   <label class="idrow"><input type="checkbox" data-k="css"><span>Add CSS (appearance)</span></label><label class="idrow"><input type="checkbox" data-k="js"><span>Add JavaScript (behavior)</span></label>${btn('reset', 'Reset')}</div>
+   <div class="box"><h3>What the browser shows</h3><div class="wp"><h4 class="wp-h"></h4><p class="wp-p"></p><button type="button" class="btn small wp-b">Click me</button><p class="wp-o" aria-live="polite"></p></div></div></div>
+  <h3>The code behind it</h3><pre class="code" tabindex="0"></pre><div class="vz-status" role="status" aria-live="polite"></div>`;
+  const h = $('input[id$=h]', box), t = $('input[id$=t]', box), wp = $('.wp', box), out = $('.wp-o', box), code = $('.code', box), status = $('.vz-status', box);
+  function draw() {
+    $('.wp-h', wp).textContent = h.value; $('.wp-p', wp).textContent = t.value; wp.classList.toggle('styled', css);
+    let c = `<h1>${esc(h.value)}</h1>\n<p>${esc(t.value)}</p>\n<button id="btn">Click me</button>`;
+    if (css) c += `\n\n<style>\n  h1 { color: #0f6cbd; text-align: center; }\n  p  { text-align: center; }\n  button { background: #0f6cbd; color: white; }\n</style>`;
+    if (js) c += `\n\n<script>\n  document.getElementById("btn").onclick = function () {\n    /* runs when the button is clicked */\n  };\n<\/script>`;
+    code.innerHTML = c;
+    const ok = edited && css && js; status.className = 'vz-status ' + (ok ? 'ok' : ''); status.textContent = ok ? 'You changed the content and used all three layers.' : `Edited text: ${edited ? 'yes' : 'not yet'}. CSS on: ${css ? 'yes' : 'no'}. JavaScript on: ${js ? 'yes' : 'no'}.`;
+    if (ok) ctx.done();
+  }
+  [h, t].forEach(i => i.addEventListener('input', () => { edited = true; draw(); }));
+  box.addEventListener('change', e => { const k = e.target.dataset && e.target.dataset.k; if (!k) return; if (k === 'css') css = e.target.checked; else { js = e.target.checked; clicks = 0; out.textContent = ''; } draw(); });
+  $('.wp-b', wp).addEventListener('click', () => { if (js) { clicks++; out.textContent = `JavaScript ran. You clicked ${clicks} time${clicks > 1 ? 's' : ''}.`; } else out.textContent = 'Nothing happens. Without JavaScript the button has no behavior.'; });
+  box.addEventListener('click', e => { if (e.target.closest('[data-a=reset]')) ctx.remount(); });
+  draw();
+};
+
+VIZ.pipe = (box, cfg, ctx) => {
+  let bw = 100, lat = 50, mb = 100; const moved = new Set();
+  box.innerHTML = instr(cfg.instr) + `<div class="slider-row"><label for="${ctx.uid}b">Bandwidth (Mbps)</label><input type="range" id="${ctx.uid}b" min="10" max="1000" step="10" value="100"><output></output></div>
+  <div class="slider-row"><label for="${ctx.uid}l">Latency (ms)</label><input type="range" id="${ctx.uid}l" min="5" max="300" step="5" value="50"><output></output></div>
+  <div class="slider-row"><label for="${ctx.uid}m">File size (MB)</label><input type="range" id="${ctx.uid}m" min="1" max="1000" step="1" value="100"><output></output></div>
+  <canvas tabindex="0" role="img" aria-label="3D pipe. Thickness shows bandwidth and length shows latency. Results are written below."></canvas>
+  <table class="tbl"><tbody class="res"></tbody></table><div class="vz-status" role="status" aria-live="polite"></div><div class="vz-controls">${btn('reset', 'Reset')}</div>`;
+  const g = k => $('#' + ctx.uid + k, box), status = $('.vz-status', box), cv = $('canvas', box);
+  const time = m => { const s = 2 * lat / 1000 + m * 8 / bw; return s < 1 ? (s * 1000).toFixed(0) + ' ms' : s < 90 ? s.toFixed(1) + ' seconds' : (s / 60).toFixed(1) + ' minutes'; };
+  const sc = Scene3D(cv, {
+    ratio: 0.36, yaw: -0.5, pitch: 0.3, scale: 0.19, dist: 9, spinSpeed: 0.12,
+    build: t => {
+      const L = 1.6 + lat / 300 * 4.4, th = 0.25 + bw / 1000 * 1.1, n = Math.round(3 + bw / 1000 * 22), o = [];
+      o.push(bx(-L / 2 - 0.5, 0, 0, 0.7, 0.8, 0.8, '--accent', 0.5), tx(-L / 2 - 0.5, 0.75, 0, 'You'), bx(L / 2 + 0.5, 0, 0, 0.7, 0.8, 0.8, '--primary', 0.5), tx(L / 2 + 0.5, 0.75, 0, 'Server'), bx(0, 0, 0, L, th, th, '--primary', 0.14, '--primary'));
+      for (let i = 0; i < n; i++) { const f = (t * 0.5 + i / n) % 1, k = i % 5, off = ((k - 2) / 2) * th * 0.3; o.push(dn(-L / 2 + f * L, off, ((i * 7) % 5 - 2) / 2 * th * 0.3, 2.6, '--warn')); }
+      return o;
+    }
+  });
+  if (!sc.supported) cv.replaceWith(el('<p class="callout warn">3D view is not available here. The numbers below still work.</p>'));
+  function draw() {
+    ['b', 'l', 'm'].forEach(k => { $('output', g(k).parentElement).textContent = { b: bw + ' Mbps', l: lat + ' ms', m: mb + ' MB' }[k]; });
+    $('.res', box).innerHTML = `<tr><td>Load a small web page (0.5 MB)</td><td><b>${time(0.5)}</b></td></tr><tr><td>Download your ${mb} MB file</td><td><b>${time(mb)}</b></td></tr><tr><td>Speed in megabytes per second</td><td>${(bw / 8).toFixed(1)} MB/s</td></tr>`;
+    const ok = moved.size >= 3; status.className = 'vz-status ' + (ok ? 'ok' : ''); status.textContent = ok ? 'Notice: the small page is limited mostly by latency, and the big file mostly by bandwidth.' : `Move all three sliders. Moved so far: ${moved.size} of 3.`;
+    if (ok) ctx.done();
+  }
+  box.addEventListener('input', e => { const k = e.target.id && e.target.id.slice(-1); if (!k || !'blm'.includes(k) || e.target.type !== 'range') return; const v = +e.target.value; if (k === 'b') bw = v; if (k === 'l') lat = v; if (k === 'm') mb = v; moved.add(k); draw(); });
+  box.addEventListener('click', e => { if (e.target.closest('[data-a=reset]')) ctx.remount(); });
+  draw();
+};
+
+VIZ.sched = (box, cfg, ctx) => {
+  const NAMES = ['Browser', 'Music player', 'Code editor', 'Video call', 'Game', 'Downloader'], WORK = 8;
+  let procs = NAMES.slice(0, 3).map(n => ({ n, done: 0 })), cores = 1, ptr = 0, ticks = 0, timer = null, wasDone = false;
+  box.innerHTML = instr(cfg.instr) + `<div class="vz-row"><label for="${ctx.uid}c">CPU cores</label><select id="${ctx.uid}c"><option>1</option><option>2</option><option>4</option></select>${btn('add', 'Open another app')}</div>
+  <div class="vz-controls">${btn('play', 'Start', 'primary')}${btn('pause', 'Pause')}${btn('step', 'Next step')}${btn('reset', 'Reset')}</div><div class="plist"></div><div class="vz-status" role="status" aria-live="polite"></div>`;
+  const list = $('.plist', box), status = $('.vz-status', box);
+  const finished = () => procs.every(p => p.done >= WORK);
+  function draw(running) {
+    list.innerHTML = procs.map(p => { const d = p.done >= WORK, r = running && running.includes(p); return `<div class="proc"><span class="pn">${esc(p.n)}</span><div class="gauge" aria-hidden="true"><i style="width:${Math.min(100, p.done / WORK * 100)}%"></i></div><span class="tag ${d ? 'ok' : r ? '' : 'warn'}">${d ? 'Finished' : r ? 'Running on a core' : 'Waiting for a core'}</span></div>`; }).join('');
+    const fin = finished(); status.className = 'vz-status ' + (fin ? 'ok' : '');
+    status.textContent = fin ? `All ${procs.length} apps finished after ${ticks} time slices with ${cores} core${cores > 1 ? 's' : ''}. Reset and try a different number of cores to compare.` : `Time slice ${ticks}. ${running ? 'Now running: ' + running.map(p => p.n).join(' and ') + '.' : 'Press Start or Next step.'}`;
+    if (fin && procs.length >= 4 && !wasDone) { wasDone = true; ctx.done(); }
+  }
+  function tick() {
+    const ready = procs.filter(p => p.done < WORK); if (!ready.length) { stop(); return draw(); }
+    const run = []; for (let i = 0; i < Math.min(cores, ready.length); i++) run.push(ready[(ptr + i) % ready.length]);
+    ptr = (ptr + run.length) % ready.length; run.forEach(p => p.done++); ticks++; draw(run); if (finished()) stop();
+  }
+  function stop() { if (timer) ctx.scope.clear(timer); timer = null; }
+  box.addEventListener('click', e => {
+    const a = e.target.closest('[data-a]'); if (!a) return; const k = a.dataset.a;
+    if (k === 'reset') return ctx.remount();
+    if (k === 'add') { if (procs.length >= 6) return; procs.push({ n: NAMES[procs.length], done: 0 }); wasDone = false; draw(); }
+    if (k === 'play') { if (finished()) return; stop(); timer = ctx.scope.interval(tick, 450); }
+    if (k === 'pause') stop(); if (k === 'step') { stop(); tick(); }
+  });
+  $('select', box).addEventListener('change', e => { cores = +e.target.value; });
+  draw();
+};
+
+/* ---- per level 3D emblem shown at the top of each lesson ---- */
+function emblem(lv, t) {
+  const P = '--primary', A = '--accent', W = '--warn', O = '--ok', L = '--line2', o = [], bob = Math.sin(t * 1.5) * 0.06;
+  switch (lv) {
+    case 0: o.push(bx(0, 0, 0, 1.8, 0.22, 1.8, P, 0.35), bx(0, 0.24 + bob, 0, 0.9, 0.22, 0.9, A, 0.6)); for (let i = -2; i <= 2; i++) o.push(ln([i * 0.35, 0, 0.9], [i * 0.35, 0, 1.25], L), ln([i * 0.35, 0, -0.9], [i * 0.35, 0, -1.25], L), ln([0.9, 0, i * 0.35], [1.25, 0, i * 0.35], L), ln([-0.9, 0, i * 0.35], [-1.25, 0, i * 0.35], L)); break;
+    case 1: for (let i = 0; i < 8; i++) { const a = i / 8 * 6.283, b = (i + 1) % 8, a2 = b / 8 * 6.283, p = [Math.cos(a) * 1.3, Math.sin(i * 1.7) * 0.35 + bob, Math.sin(a) * 1.3]; o.push(dn(p[0], p[1], p[2], 5, P), ln(p, [0, 0, 0], A, 0.4), ln(p, [Math.cos(a2) * 1.3, Math.sin(b * 1.7) * 0.35, Math.sin(a2) * 1.3], P, 0.5)); } o.push(dn(0, 0, 0, 8, W)); break;
+    case 2: o.push(bx(0, 1, 0, 0.9, 0.3, 0.6, W, 0.5), bx(0, 0.3, 0, 1.3, 0.3, 0.7, A, 0.5), bx(-1.5, -0.4, 0, 0.7, 0.5, 0.6, P, 0.5), bx(1.5, -0.4, 0, 0.7, 0.5, 0.6, P, 0.5), ln([0, 0.85, 0], [0, 0.45, 0], L), ln([-0.6, 0.2, 0], [-1.4, -0.2, 0], L), ln([0.6, 0.2, 0], [1.4, -0.2, 0], L)); break;
+    case 3: o.push(bx(0, 0.8, 0, 1.2, 1.9, 1.2, L, 0.12)); for (let k = 0; k < 4; k++) o.push(bx(0, 0.15 + k * 0.42, 0, 1, 0.3, 1, k === 3 ? A : P, 0.5)); break;
+    case 4: [[-0.7, 0.3, 0, 11], [0, 0.6 + bob, 0, 14], [0.7, 0.3, 0, 11], [0, 0.2, 0.5, 9], [0, 0.2, -0.5, 9]].forEach(d => o.push(dn(d[0], d[1], d[2], d[3], P))); o.push(bx(0, -0.55, 0, 1.6, 0.3, 1, L, 0.3)); break;
+    case 5: o.push(bx(-1.3, 0, 0, 1.1, 1.1, 1.1, P, 0.35), bx(0, -0.15 + bob, 0, 0.8, 0.8, 0.8, A, 0.45), bx(1.2, -0.3, 0, 0.45, 0.45, 0.45, W, 0.6)); break;
+    case 6: o.push(bx(0, -0.4, 0, 2, 0.25, 1.4, P, 0.4), bx(0, 0, 0, 2, 0.25, 1.4, A, 0.4), bx(0, 0.4 + bob, 0, 2, 0.25, 1.4, W, 0.4), bx(-0.6, 0.85, 0, 0.35, 0.35, 0.35, O, 0.6), bx(0.4, 0.85, 0.2, 0.35, 0.35, 0.35, O, 0.6)); break;
+    case 7: for (let r = 0; r < 4; r++) o.push(bx(0, r * 0.34 - 0.4, 0, 2.4, 0.22, 1.2, r === 0 ? A : P, 0.35)); o.push(ln([-0.4, -0.3, 0.62], [-0.4, 0.8, 0.62], L), ln([0.5, -0.3, 0.62], [0.5, 0.8, 0.62], L)); break;
+    case 8: o.push(bx(0, -0.4, 0, 3, 0.1, 2, O, 0.25), bx(0, 0.6, 0, 3, 0.1, 2, A, 0.25), dn(-0.8, -0.3, 0, 5, P), dn(0.8, -0.3, 0.3, 5, P), dn(0, 0.7, 0, 7, W), ln([0, 0.65, 0], [0.8, -0.3, 0.3], W), ln([0, 0.65, 0], [-0.8, -0.3, 0], W)); break;
+    case 9: o.push(bx(0, 0.3, 0, 1.4, 1.7, 0.4, P, 0.3), bx(0, 0.2, 0.25, 0.5, 0.4, 0.2, W, 0.7), dn(0, 0.65, 0.25, 4, W)); break;
+    case 10: for (let i = 0; i < 5; i++) { const h = 0.4 + i * 0.32; o.push(bx(-1.2 + i * 0.6, h / 2 - 0.5, 0, 0.4, h, 0.4, i === 4 ? O : P, 0.4)); } break;
+    case 11: o.push(bx(-1.3, 0.3, 0, 0.8, 1.4, 0.8, P, 0.3), bx(1.3, 0.3, 0, 0.8, 1.4, 0.8, A, 0.3), ln([-0.9, 0.3, 0], [0.9, 0.3, 0], L), dn(-0.9 + ((t * 0.5) % 1) * 1.8, 0.3, 0, 4, W)); break;
+    default: o.push(bx(0, 0.3, 0, 0.9, 0.9, 0.9, P, 0.5)); for (let i = 0; i < 6; i++) { const a = i / 6 * 6.283 + t * 0.3; o.push(bx(Math.cos(a) * 1.5, 0.3, Math.sin(a) * 1.5, 0.45, 0.45, 0.45, i % 2 ? A : W, 0.45), ln([0, 0.3, 0], [Math.cos(a) * 1.5, 0.3, Math.sin(a) * 1.5], L, 0.4)); }
+  }
+  return o;
+}
+
+/* ---- lesson page with five calm steps ---- */
+const _uc = updateChecklist;
+updateChecklist = function (id) { _uc(id); updateTabs(id); };
+function updateTabs(id) {
+  const p = S.prog[id] || {}, d = { try: p.viz, play: p.chal, check: p.quiz, recap: isDone(id) };
+  $$('.mtab').forEach(t => { const k = t.dataset.t; $('.mdone', t).textContent = d[k] ? 'Done' : ''; });
+}
+renderModule = function (id) {
+  const m = MOD[id], idx = MODS.indexOf(m), prev = MODS[idx - 1], next = MODS[idx + 1]; curId = id;
+  S.last = id; save(); award('open:' + id, 3); revealN = 1;
+  const TABS = [['learn', 'Learn'], ['try', 'Try it'], ['play', 'Play'], ['check', 'Check'], ['recap', 'Recap']];
+  main.innerHTML = `<article class="module" data-tab="learn" aria-labelledby="mt">
+   <header class="mod-head"><div><p class="eyebrow">Level ${m.lv}: ${esc(LV[m.lv])}</p><h1 id="mt">${m.id} ${esc(m.title)}</h1><p class="sub">${esc(m.sub)}</p></div><canvas class="emblem" tabindex="0" role="img" aria-label="Decorative 3D model for this level. Drag to rotate."></canvas></header>
+   <div class="mtabs" role="tablist" aria-label="Lesson steps">${TABS.map(([k, l], i) => `<button type="button" role="tab" class="mtab" id="tab-${k}" data-t="${k}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" aria-controls="pn-${k}"><span class="mn">${i + 1}</span>${l}<span class="mdone"></span></button>`).join('')}</div>
+   <div class="panels">
+    <section class="panel on" id="pn-learn" data-p="learn" role="tabpanel" aria-labelledby="tab-learn"><div class="card read">
+      <h2>You will learn</h2><ul class="goals">${m.obj.map(o => `<li>${o}</li>`).join('')}</ul>${prev ? `<p class="muted">Helpful before this: <a href="#/module/${prev.id}">${prev.id} ${esc(prev.title)}</a></p>` : '<p class="muted">No prerequisites. Start here if you are new to computers.</p>'}
+      <section class="rv sec"><h2>What is it?</h2><p>${m.what}</p>${m.ana ? `<div class="callout"><b>Analogy, not the exact technical truth:</b> ${m.ana}</div>` : ''}</section>
+      <section class="rv sec"><h2>Why do we need it?</h2><p>${m.why}</p></section>
+      <section class="rv sec"><h2>Real-world example</h2><p>${m.ex}</p></section>
+      <section class="rv sec"><h2>How does it work?</h2><ol class="steps-list">${m.how.map(h => `<li>${h}</li>`).join('')}</ol></section></div>
+      <div class="panel-nav"><button type="button" class="btn primary" data-go="try">Next: Try it yourself</button></div></section>
+    <section class="panel" id="pn-try" data-p="try" role="tabpanel" aria-labelledby="tab-try"><div class="card"><h2>Try it yourself</h2><p>${m.tryit}</p><div id="vizHost"></div></div>
+      <details class="card mist-d"><summary>Common mistakes</summary><ul class="mist">${m.mist.map(x => `<li>${x}</li>`).join('')}</ul></details>
+      <div class="panel-nav"><button type="button" class="btn primary" data-go="play">Next: Play the mini-game</button></div></section>
+    <section class="panel" id="pn-play" data-p="play" role="tabpanel" aria-labelledby="tab-play"><div class="card"><h2>${esc(m.chal.title)}</h2><p>${m.chal.intro}</p><div id="chalHost"></div></div>
+      <div class="panel-nav"><button type="button" class="btn primary" data-go="check">Next: Check your knowledge</button></div></section>
+    <section class="panel" id="pn-check" data-p="check" role="tabpanel" aria-labelledby="tab-check"><div class="card"><h2>Quick check</h2><div id="quickHost"></div></div><div class="card"><h2>Knowledge check</h2><div id="quizHost"></div></div>
+      <div class="panel-nav"><button type="button" class="btn primary" data-go="recap">Next: Recap</button></div></section>
+    <section class="panel" id="pn-recap" data-p="recap" role="tabpanel" aria-labelledby="tab-recap"><div class="card"><h2>Remember</h2><p>${m.rem}</p><ul class="check-list" aria-label="Module progress"></ul><div class="vz-controls"><button type="button" class="btn primary" id="markBtn">Mark module complete</button></div></div>
+      <nav class="mod-nav" aria-label="Module navigation">${prev ? `<a class="btn" href="#/module/${prev.id}">Previous: ${esc(prev.title)}</a>` : '<span></span>'}${next ? `<a class="btn primary" href="#/module/${next.id}">Next module: ${esc(next.title)}</a>` : '<a class="btn primary" href="#/progress">See your progress</a>'}</nav></section>
+   </div></article>`;
+  const art = $('.module', main); let vizOn = false;
+  const ensureViz = () => { if (!vizOn) { vizOn = true; mountViz(m, $('#vizHost')); } };
+  function setTab(k) {
+    art.dataset.tab = k;
+    $$('.mtab', art).forEach(t => { const on = t.dataset.t === k; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
+    $$('.panel', art).forEach(p => p.classList.toggle('on', p.dataset.p === k));
+    if (k === 'try' || S.inst) ensureViz();
+    window.scrollTo(0, 0);
+  }
+  art.addEventListener('click', e => { const t = e.target.closest('[data-t]'); if (t) return setTab(t.dataset.t); const g = e.target.closest('[data-go]'); if (g) setTab(g.dataset.go); });
+  $('.mtabs', art).addEventListener('keydown', e => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; e.preventDefault();
+    const ts = $$('.mtab', art), i = ts.findIndex(t => t.getAttribute('aria-selected') === 'true'), n = ts[(i + (e.key === 'ArrowRight' ? 1 : ts.length - 1)) % ts.length]; setTab(n.dataset.t); n.focus();
+  });
+  if (S.inst) ensureViz();
+  Scene3D($('.emblem', art), { ratio: 0.8, yaw: 0.5, pitch: 0.4, scale: 0.3, dist: 6, spinSpeed: 0.45, build: t => emblem(m.lv, t) });
+  runSet($('#chalHost'), m.chal.qs, { onFinish: r => { if (!r.review) { markProg(id, 'chal'); award('chal:' + id, 15, 'Mini-game complete'); } } });
+  renderQuestion(m.quick, $('#quickHost'), {});
+  runSet($('#quizHost'), m.quiz, { onFinish: r => { if (!r.review) { const o = S.scores[id] || { best: 0 }; S.scores[id] = { best: Math.max(o.best || 0, r.pct), last: r.pct }; save(); markProg(id, 'quiz'); award('quizdone:' + id, 10, 'Knowledge check finished'); } } });
+  $('#markBtn').addEventListener('click', () => completeModule(id));
+  updateChecklist(id); applyReveal(); renderRoadmap();
+};
+
+/* ---- calm home page with a 3D skyline of your progress ---- */
+renderHome = function () {
+  curId = null;
+  const last = MOD[S.last] || MODS[0], started = Object.keys(S.prog).length || doneCount();
+  const target = isDone(last.id) ? (MODS.find(m => !isDone(m.id)) || last) : last;
+  const firstOpen = lv => (lvMods(lv).find(m => !isDone(m.id)) || lvMods(lv)[0]).id;
+  main.innerHTML = `<section class="card hero3d" aria-label="Interactive 3D globe of cloud regions"><canvas tabindex="0" role="img" aria-label="Rotating 3D globe with cloud regions. Drag to rotate."></canvas>
+   <div class="hero3d-txt"><h1>${started ? 'Welcome back' : 'Welcome to CloudQuest'}</h1><p>Your journey from computer basics to the cloud.</p><p><a class="btn primary big" href="#/module/${target.id}">${started ? 'Continue' : 'Start learning'}: ${esc(target.title)}</a></p><p class="muted">${pctAll()}% complete, ${S.xp} XP${S.daily.streak ? ', ' + S.daily.streak + ' day streak' : ''}</p></div></section>
+   <section class="card"><h2>Your skyline</h2><p class="muted">Each tower is a level. Solid blocks are finished modules. Select a tower to open that level.</p><canvas id="sky" tabindex="0" role="img" aria-label="3D skyline with one tower per level. The list below gives the same information."></canvas>
+   <details class="lv-list"><summary>Show levels as a list</summary><ul>${LV.map((n, lv) => { const ms = lvMods(lv), d = ms.filter(m => isDone(m.id)).length; return `<li><a href="#/module/${firstOpen(lv)}">Level ${lv}: ${esc(n)}</a> <span class="muted">${d} of ${ms.length} done</span></li>`; }).join('')}</ul></details></section>
+   <div class="two"><section class="card" id="daily"><h2>Daily challenge</h2></section><section class="card"><h2>Tools</h2><ul class="toollist"><li><a href="#/lab">Terminal lab</a><span class="muted">Try commands safely</span></li><li><a href="#/glossary">Glossary</a><span class="muted">Plain language terms</span></li><li><a href="#/cards">Flashcards</a><span class="muted">Flip and review</span></li><li><a href="#/practice">Practice quiz</a><span class="muted">Mixed questions</span></li></ul><p class="muted">Press Ctrl K to search anything.</p></section></div>`;
+  /* globe */
+  const pairs = [[0, 7], [4, 5], [11, 8], [9, 3], [10, 11], [6, 4]];
+  Scene3D($('.hero3d canvas', main), {
+    fill: true, yaw: 1.1, pitch: 0.28, scale: 0.36, ox: 170, spinSpeed: 0.2,
+    build: t => {
+      const o = GLOBE_BASE.slice();
+      pairs.forEach(([a, b], i) => { for (let k = 0; k < 20; k++) o.push({ t: 'l', a: arcPoint(REG_XYZ[a], REG_XYZ[b], k / 20, 0.25), b: arcPoint(REG_XYZ[a], REG_XYZ[b], (k + 1) / 20, 0.25), c: '--accent', al: 0.4, w: 1.3 }); o.push({ t: 'd', p: arcPoint(REG_XYZ[a], REG_XYZ[b], (t * 0.22 + i / pairs.length) % 1, 0.25), r: 3.2, c: '--warn', glow: true }); });
+      REG_XYZ.forEach(p => o.push({ t: 'd', p, r: 4, c: '--primary', glow: true }));
+      return o;
+    }
+  });
+  /* skyline */
+  Scene3D($('#sky', main), {
+    ratio: 0.36, yaw: 0.35, pitch: 0.32, scale: 0.21, dist: 9, spin: false,
+    onPick: id => { if (id[0] === 'L') location.hash = '#/module/' + firstOpen(+id.slice(1)); },
+    build: () => {
+      const o = [bx(0, -0.08, 0, 7.8, 0.12, 1.5, '--line2', 0.15, '--line2')];
+      LV.forEach((_, lv) => {
+        const ms = lvMods(lv), x = -3.4 + lv * 0.567, allDone = ms.every(m => isDone(m.id));
+        ms.forEach((m, k) => o.push(bx(x, 0.12 + k * 0.2, 0, 0.42, 0.17, 0.42, isDone(m.id) ? '--ok' : '--primary', isDone(m.id) ? 0.7 : 0.1, isDone(m.id) ? '--ok' : '--line2')));
+        o.push(tx(x, -0.08, 0.95, 'L' + lv, '--muted'), { t: 'd', p: [x, 0.12 + ms.length * 0.2 + 0.25, 0], r: 6, c: allDone ? '--ok' : '--primary', glow: true, id: 'L' + lv });
+      });
+      return o;
+    }
+  });
+  /* daily challenge */
+  const d = $('#daily'), today = dayStr();
+  if (S.daily.doneDate === today) d.insertAdjacentHTML('beforeend', `<p><span class="tag ok">Completed today</span> Come back tomorrow for a new question. Streak: ${S.daily.streak} day(s).</p>`);
+  else { d.insertAdjacentHTML('beforeend', '<p class="muted">One question a day keeps your streak alive.</p>'); renderQuestion(dailyQuestion(), d, { showTopic: true, onAnswer: ok => { S.daily.streak = S.daily.lastDone === dayStr(-1) ? S.daily.streak + 1 : 1; S.daily.lastDone = today; S.daily.doneDate = today; save(); award('daily:' + today, ok ? 10 : 5, 'Daily challenge done'); checkBadges(); } }); }
+};
+
+/* ---- onboarding cube shows nothing new for screen readers, so it is hidden from them ---- */
 init();
 })();
 </script>
